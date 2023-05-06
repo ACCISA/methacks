@@ -6,6 +6,7 @@ export default function Layout(){
     return (
         <main>
         <HeaderIndex />
+        <Header className="relative" />
         <Outlet />
       </main>
     );

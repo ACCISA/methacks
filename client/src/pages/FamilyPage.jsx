@@ -12,10 +12,22 @@ export default function FamilyPage() {
     const { username, setUsername } = useContext(UserContext)
     const [redirect, setRedirect] = useState(false)
 
-    function handleRemove() {
+    function handleRemoveGroup() {
         alert("This group has been removed")
         axios.delete("/manage/" + id)
         setRedirect(true)
+    }
+
+    function handleRemoveMember(ev) {
+        // for (let i = 0; i < members.length; i++) {
+        //     if (members[i].member === ev.target.value) {
+        //         // console.log(members[i].member)
+        //         members.splice(i, 1)
+        //     }
+        // }
+        const userRemoved = ev.target.value
+        axios.post("/manage/" + id, { members, removed: userRemoved })
+
     }
 
     useEffect(() => {
@@ -55,15 +67,15 @@ export default function FamilyPage() {
                     <div className="flex justify-between">
                         <div className="capitalize">{name}'s Members</div>
                         <div className="text-sm">
-                            <button onClick={handleRemove} className="text-sm px-2 hover:bg-red-500 m-2">Remove Group</button>
+                            <button onClick={handleRemoveGroup} className="text-sm px-2 hover:bg-red-500 m-2">Remove Group</button>
                         </div>
                     </div>
                     <div className="border p-2">
                         {fam && (members.map((member) => (
-                            <div className="flex border">
+                            <div className="flex border justify-between">
                                 <div className="mx-2">Name: {member.member}</div>
                                 <div>Restrictions: {member.restrictions}</div>
-
+                                <button value={member.member} onClick={handleRemoveMember} className="w-6 rounded-full hover:bg-red-500">X</button>
                             </div>
                         )))}
                         <AddMemberForm />
