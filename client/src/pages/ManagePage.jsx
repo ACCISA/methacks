@@ -31,7 +31,10 @@ export default function ManagePage() {
                 <h2 className=' font-bold flex justify-center text-xl'>Your Families</h2>
                 <div className="grid grid-cols-4 border">
                     {username && families.map((fam) => (
-                        <button className=' bg-white hover:underline underline-offset-4 text-black m-4 p-2 mt-4 w-auto' key={fam._id}> {fam.name} </button>
+                        <Link to={"/manage/" + fam._id}>
+                            <button className=' bg-white hover:underline underline-offset-4 text-black m-4 p-2 mt-4 w-auto' key={fam._id}> {fam.name} </button>
+
+                        </Link>
                     ))}
 
 

@@ -8,6 +8,7 @@ import { UserContextProvider } from './UserContext';
 import axios from "axios"
 import ManagePage from './pages/ManagePage';
 import AddFamily from './pages/AddFamily';
+import FamilyPage from './pages/FamilyPage';
 
 axios.defaults.baseURL = "http://localhost:4000";
 axios.defaults.withCredentials = true;
@@ -22,6 +23,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/manage" element={<ManagePage />} />
           <Route path="/manage/new" element={<AddFamily />} />
+          <Route path="/manage/:id" element={<FamilyPage />} />
         </Route>
       </Routes>
     </UserContextProvider>
