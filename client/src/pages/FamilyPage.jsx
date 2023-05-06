@@ -12,6 +12,19 @@ export default function FamilyPage() {
     const { username, setUsername } = useContext(UserContext)
     const [redirect, setRedirect] = useState(false)
     const [parent, setParent] = useState(false)
+    const bgFam = {
+        backgroundImage: 'url("src/images/spoon.jpg")',
+    
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        color: "white",
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        width: "100%",
+        height: '100%'
+    }
     function handleRemoveGroup() {
         alert("This group has been removed")
         axios.delete("/manage/" + id)
