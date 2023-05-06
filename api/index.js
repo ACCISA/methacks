@@ -38,6 +38,18 @@ app.get("/manage/:id", (req, res) => {
   });
 });
 
+app.delete("/manage/:id", (req, res) => {
+  const { id } = req.params;
+  const { token } = req.cookies;
+  jwt.verify(token, jwtSecret, {}, async (err, user) => {
+    if (err) {
+      res.json(err);
+      return;
+    }
+    res.json(await Family.deleteOne({ _id: id }));
+  });
+});
+
 app.put("/manage/:id", async (req, res) => {
   const { id } = req.params;
   const { token } = req.cookies;

@@ -10,6 +10,14 @@ export default function FamilyPage() {
     const [name, setName] = useState('')
     const [members, setMembers] = useState([])
     const { username, setUsername } = useContext(UserContext)
+    const [redirect, setRedirect] = useState(false)
+
+    function handleRemove() {
+        alert("This group has been removed")
+        axios.delete("/manage/" + id)
+        setRedirect(true)
+    }
+
     useEffect(() => {
         if (!id) return;
         if (!username) return;
@@ -36,11 +44,20 @@ export default function FamilyPage() {
         return (<Navigate to={"/login"} />)
     }
 
+    if (redirect) {
+        return (<Navigate to={"/manage"} />)
+    }
+
     return (
         <div>
             {name && (
                 <div>
-                    <div>{name}'s Members</div>
+                    <div className="flex justify-between">
+                        <div className="capitalize">{name}'s Members</div>
+                        <div className="text-sm">
+                            <button onClick={handleRemove} className="text-sm px-2 hover:bg-red-500 m-2">Remove Group</button>
+                        </div>
+                    </div>
                     <div className="border p-2">
                         {fam && (members.map((member) => (
                             <div className="flex border">
