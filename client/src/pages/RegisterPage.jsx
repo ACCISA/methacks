@@ -74,14 +74,18 @@ export default function RegisterPage() {
 
     return (
         <form className="register" onSubmit={handleRegister}>
-            <input value={usernameState} onChange={usernameOnChange} type="text" placeholder="username" />
-            <input value={password} onChange={passOnChange} type="password" placeholder="password" />
-            <input value={confirmPass} onChange={confirmPassOnChange} type="password" />
-            {!validPass && <div className="text-red-500">Passwords do not match</div>}
-            {dupeUsername && <div className="text-red-500">This username is already taken</div>}
-            {missingUsername && <div className="text-red-500">Missing username field</div>}
-            {missingPass && <div className="text-red-500">Missing password field</div>}
-            <button>Register</button>
+            <div className="searchBar content-center mt-[48px] flex flex-col items-center justify-center">
+                <input className="rounded-md h-10 px-4 bg-white mb-3 block w-full" value={usernameState} onChange={usernameOnChange} type="text" placeholder="Username" />
+                <input className="rounded-md h-10 px-4 bg-white mb-3 block w-full" value={password} onChange={passOnChange} type="password" placeholder="Password" />
+                <input className="rounded-md h-10 px-4 bg-white mb-3 block w-full" value={confirmPass} onChange={confirmPassOnChange} type="Password" placeholder="Confirm Password" />
+                {!validPass && <div className="text-red-500">Passwords do not match</div>}
+                {dupeUsername && <div className="text-red-500">This username is already taken</div>}
+                {missingUsername && <div className="text-red-500">Missing username field</div>}
+                {missingPass && <div className="text-red-500">Missing password field</div>}
+            </div>
+            <div className="Buttons mt-25 pd-[20px] flex justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-12">
+                <button className=" bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-md w-[125px] py-3 px-2 mt-10">Register</button>
+            </div>
         </form>
     );
 }
