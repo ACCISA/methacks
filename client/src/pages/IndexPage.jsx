@@ -56,9 +56,12 @@ export default function IndexPage() {
     <div style={bg} id="bkng" className="p-0 h-full  flex-col justify-center align-middle">
       <HeaderIndex />
       <div className="searchBar content-center flex items-center justify-center">
-        <form onSubmit={handleUrlForm} className="w-96 mt-32 w-100 text-center">
-          <input value={url} onChange={ev => { setUrl(ev.target.value) }} type="text" className='text-white h-10 placeholder:text-white mb-3 border-white px-4 bg-transparent rounded-md' placeholder="Paste URL" />
-          <label htmlFor="file" className="flex items-center text-left w-full bg-transparent border-2 text-white py-2 px-4 h-10 rounded-md cursor-pointer border-white">
+        <div className="backdrop-blur-md w-1/2 text-center rounded-md border text-lg">Welcome to NutriScan, where allergies don't limit your taste buds! Discover delicious recipes that cater to your dietary needs with our innovative platform. Input your allergies, and we'll filter out any potentially harmful ingredients, so you can enjoy your meals safely. Join our community of recipe enthusiasts today and embark on a culinary journey filled with tantalizing flavors and vibrant connections. <br/>
+    
+        </div>
+        <form onSubmit={handleUrlForm} className="mt-24 w-10 text-center">
+          <input value={url} onChange={ev => { setUrl(ev.target.value) }} type="text" className='text-white h-10 placeholder:text-white mb-3 border-white px-4 bg-transparent rounded-md ' placeholder="Paste URL" />
+          <label htmlFor="file" className="flex items-center text-left border-solid md:border-dotted w-full bg-transparent border-2 text-white py-2 px-4 h-10 rounded-md cursor-pointer border-white">
             {file ? <FaCheckCircle className="mr-2" /> : null}
             Upload a file {file ? `- ${file.name}` : ''}
           </label>
