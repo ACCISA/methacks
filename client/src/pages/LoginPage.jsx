@@ -69,7 +69,7 @@ export default function LoginPage() {
             <form onSubmit={handleLogin} className="login w-auto items-center bg-blue-500 m-20 flex flex-row">
                 <div className="w-full">
                     <div className="searchBar fixed left-28 content-center align-middle mt-[48px] flex flex-col items-center justify-center">
-                        <input className=" mt-48 rounded-md mb-3 px-4 text-white  placeholder:text-white border-white bg-transparent" value={usernameState} type="text" placeholder="Username" onChange={(ev) => { setUsernameState(ev.target.value) }} />
+                        <input className=" mt-48 rounded-md mb-3 px-4 text-white placeholder:text-white border-white bg-transparent" value={usernameState} type="text" placeholder="Username" onChange={(ev) => { setUsernameState(ev.target.value) }} />
                         <input className=" rounded-md mb-3 px-4 text-white block placeholder:text-white border-white bg-transparent" value={password} onChange={(ev) => { setPassword(ev.target.value) }} type="password" placeholder="Password" />
                         {invalidLogin && <div className="text-red-500 w-auto rounded-md mb-3 px-4">Invalid Credentials</div>}
                         <div className="Buttons mt-25 pd-[20px] flex justify-center space-x-2 sm:space-x-4 ">

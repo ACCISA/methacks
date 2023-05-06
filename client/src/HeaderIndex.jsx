@@ -42,10 +42,10 @@ export default function Header() {
 
         {!username && (
           <div className='align-middle justify-center ml-16'>
-            <Link to="/login" className="mr-2">
+            <Link to="/login" className="mr-2 text-white hover:text-orange-600">
               Login
             </Link>
-            <Link to="/register" className="">Register</Link>
+            <Link to="/register" className="  text-white hover:text-orange-600">Register</Link>
           </div>
         )}
       </nav>
