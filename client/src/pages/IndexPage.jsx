@@ -33,8 +33,6 @@ export default function IndexPage() {
     function handleUrlForm(event) {
         event.preventDefault(); // prevent default form submission behavior
 
-        console.log(input.current.files, "hello");
-
         if (url && file) {
             console.log("You cannot input both a URL and a file. Please choose one.");
             return;
@@ -42,10 +40,10 @@ export default function IndexPage() {
 
         if (url) {
             console.log("User inputted a URL:", url);
-            // Perform actions with URL input
+            sendURLToPython(url);
         } else if (input.current.files[0]) {
             console.log("User uploaded a file:", input.current.files[0].name);
-            // Perform actions with uploaded file
+            sendImageToPython(input.current.files[0]);
         } else {
             console.log("Please input either a URL or a file.");
             return;
@@ -56,26 +54,68 @@ export default function IndexPage() {
         setFile(null);
     }
 
-    function handleFile(event) {
-        // console.log(event.target.files[0]);
-        console.log(event);
-        console.log(event.target.files[0]);
-        setFile(event.target.files[0].name);
+    const sendImageToPython = (image) => {
+        let headers = new Headers();
+        headers.append("Content-Type", 'application/json')
+        headers.append('GET', 'POST')
+        headers.append("Access-Control-Allow-Origin", "*")
+        var formdata = new FormData();
+        formdata.append("snap", image);
+
+        fetch("http://localhost:5000/image", {
+            mode: 'cors',
+            method: 'POST',
+            headers: headers,
+            body: formdata
+        })
+            .then((response) => {
+                console.log(response)
+                if (response.ok) {
+                    console.log("Success")
+                    console.log()
+                    return response.json()
+                } else {
+                    console.log("Not Successful")
+                }
+
+            })
+            .then((data) => {
+                console.log(data)
+                console.log(data.status)
+            })
     }
 
-    const sendStringToPython = (url) => {
-        axios.post('/api/send_string', { URL: url })
-          .then(response => {
-            console.log(response.data);
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      }
+    const sendURLToPython = (url) => {
+        let headers = new Headers();
+        headers.append("Content-Type", 'application/json')
+        headers.append("Access-Control-Allow-Origin", "*")
+        var formdata = new FormData();
+        formdata.append("snap", url);
 
-      const upload = () => {
+        fetch("http://localhost:5000/url", {
+            mode: 'cors',
+            method: 'POST',
+            headers: headers,
+            body: formdata
+        })
+            .then((response) => {
+                console.log(response)
+                if (response.ok) {
+                    console.log("Success")
+                    console.log()
+                    return response.json()
+                } else {
+                    console.log("Not Successful")
+                }
 
-      }
+            })
+            .then((data) => {
+                console.log(data)
+                console.log(data.status)
+            })
+    }
+
+
 
     return (
 
@@ -84,14 +124,14 @@ export default function IndexPage() {
 
             <div className="searchBar content-center flex items-center justify-center">
                 <form onSubmit={ev => handleUrlForm(ev)} className="w-96 mt-32 w-100 text-center">
-                {/* <form onSubmit={ev => handleSubmit(ev)} className="w-96 mt-32 w-100 text-center"> */}
+                    {/* <form onSubmit={ev => handleSubmit(ev)} className="w-96 mt-32 w-100 text-center"> */}
 
                     <label>
                         <input id="url" value={url} onChange={ev => { setUrl(ev.target.value) }} type="text" className='text-white h-10 placeholder:text-white mb-3 border-white px-4 bg-transparent rounded-md' placeholder="Paste URL" />
                     </label>
 
 
-                    <label htmlFor={file} onClick={upload} className="flex items-center text-left w-full bg-transparent border-2 text-white py-2 px-4 h-10 rounded-md cursor-pointer">
+                    <label htmlFor={file} className="flex items-center text-left w-full bg-transparent border-2 text-white py-2 px-4 h-10 rounded-md cursor-pointer">
                         Upload a file
                         <input accept="image/*" ref={input} id="file" name="file" type="file" className="opacity-0 absolute" />
 

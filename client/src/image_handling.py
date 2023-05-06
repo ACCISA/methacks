@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 @app.route('/api/send_image', methods=['POST'])
-def clean_ingredient_names(recipe):
+def get_clean_ingredient_names(recipe):
     """
     Takes a recipe string and an API key for Spoonacular, and returns a list of
     the clean names of the ingredients in the recipe.

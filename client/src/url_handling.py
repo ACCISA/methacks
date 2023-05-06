@@ -2,10 +2,6 @@ import requests
 import json
 from flask import Flask, request
 
-app = Flask(__name__)
-
-@app.route('/api/send_string', methods=['POST'])
-
 def receive_string(url):
     string_data = request.json['stringData']
     
