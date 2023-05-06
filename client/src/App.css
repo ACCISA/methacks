@@ -94,3 +94,44 @@ button{
   border-radius: 5px;
   padding: 7px 0;
 }
+.manageButton{
+  font-size:8px;
+  height: 30px;
+  width: auto;
+  padding: 5px;
+  margin-top: 15px;
+  background-color:#555;
+}
+.manageSubmit{
+  font-size:8px;
+  margin-top:20px;
+  height: 25px;
+  width: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: #fff;
+  background-color: #333;
+  color: #fff;
+
+}
+.manageSubmit:hover{
+  font-size:8px;
+  margin-top:20px;
+  height: 25px;
+  width: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: #fff;
+  background-color: rgb(101, 236, 77);
+  color: black;
+}
+
+.borderForm{
+  border: 2px solid;
+  border-color: #00000061;
+  padding:10px;
+  padding-bottom: 15px;
+  margin-top:10px;
+  border-radius: 5px;
+ 
+}
