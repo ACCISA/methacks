@@ -1,24 +1,11 @@
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AddMemberForm from '../AddMemberForm';
-import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../UserContext';
-import axios from "axios"
 
 export default function ManagePage() {
 
-    const { username, setUsername } = useContext(UserContext)
-    const [families, setFamilies] = useState([])
+    function handleAddFam() {
 
-    useEffect(() => {
-        if (username) {
-            axios.get("data")
-                .then(({ data }) => {
-                    setFamilies(data)
-                })
-        } else {
-            console.log("not logged in")
-        }
-    }, [])
+    }
 
     return (
         <>
@@ -29,9 +16,11 @@ export default function ManagePage() {
             <div className="text-xl text-center my-4 flex flex-col items-center">
                 Your Families
                 <div className="border grid grid-cols-4">
-                    {username && families.map((fam) => (
-                        <button className='m-4 p-2 mt-4 w-auto' key={fam._id}> {fam.name} </button>
-                    ))}
+                    <button className='m-4 p-2 mt-4 w-auto'>Fam 1</button>
+                    <button className='m-4 p-2 mt-4 w-auto'>Fam 2</button>
+                    <button className='m-4 p-2 mt-4 w-auto'>Fam 3</button>
+                    <button className='m-4 p-2 mt-4 w-auto'>Fam 4</button>
+                    <button className='m-4 p-2 mt-4 w-auto'>Fam 5</button>
 
 
                 </div>
