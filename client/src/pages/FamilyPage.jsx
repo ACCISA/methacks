@@ -14,14 +14,15 @@ export default function FamilyPage() {
                 console.log("Asd")
                 setName(data.name)
                 setFam(data)
-                let entries = Object.entries(data.members)
-                let dataFetch = entries.map(([key, val] = entry) => {
-
-                })
                 let dataArr = []
-                for (const index in data.members) {
-                    dataArr.push(data.members[index])
-                }
+                let entries = Object.entries(data.members)
+                entries.map(([key, val] = entry) => {
+                    let arrEntry = {
+                        member: key,
+                        restrictions: val
+                    }
+                    dataArr.push(arrEntry)
+                })
                 setMembers(dataArr)
             })
 
@@ -33,9 +34,13 @@ export default function FamilyPage() {
             {name && (
                 <div>
                     <div>{name}'s Members</div>
-                    <div className="border">
+                    <div className="border p-2">
                         {fam && (members.map((member) => (
-                            <div>{member}</div>
+                            <div className="flex border">
+                                <div className="mx-2">Name: {member.member}</div>
+                                <div>Restrictions: {member.restrictions}</div>
+
+                            </div>
                         )))}
                     </div>
                 </div>

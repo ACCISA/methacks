@@ -5,7 +5,7 @@ const FamilySchema = new mongoose.Schema({
   name: String,
   description: String,
   restrictions: [String],
-  members: { type: Map, of: String },
+  members: { type: Map, of: [String] },
 });
 
 const FamilyModel = mongoose.model("Family", FamilySchema);
