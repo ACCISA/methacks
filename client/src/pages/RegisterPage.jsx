@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
 import axios from "axios"
 import { Navigate } from "react-router-dom";
+import HeaderIndex from "../HeaderIndex";
 
 export default function RegisterPage() {
     const { username, setUsername } = useContext(UserContext)
@@ -87,6 +88,7 @@ export default function RegisterPage() {
 
     return (
         <div style={bg3} id="bkng3" className="p-0 h-full  flex-col justify-center align-middle">
+              <HeaderIndex />
         <form className="register" onSubmit={handleRegister}>
             <div className="searchBar backdrop-blur-sm rounded-full content-center mt-[190px] flex flex-col items-center justify-center">
                 <input className="rounded-md h-10 px-4 bg-white mb-3 block w-full" value={usernameState} onChange={usernameOnChange} type="text" placeholder="Username" />

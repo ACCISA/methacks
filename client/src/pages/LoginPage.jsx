@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
 import axios from "axios"
 import { Navigate } from "react-router-dom";
+import HeaderIndex from "../HeaderIndex";
 
 export default function LoginPage() {
     const { username, setUsername } = useContext(UserContext)
@@ -55,7 +56,9 @@ export default function LoginPage() {
     }
 
     return (
+       
         <div style={bg2} id="bkng2" className="p-0 h-full  flex-col justify-center align-middle">
+              <HeaderIndex />
         <form onSubmit={handleLogin} className="login w-[400px] flex flex-col justify-between align-middle">
             <div className="searchBar content-center mt-[48px] flex flex-col items-center justify-center">
                 <input className="w-1/2 mr-[1000px] mt-48 rounded-md mb-3 h-10 px-4 text-white  placeholder:text-white border-white bg-transparent" value={usernameState} type="text" placeholder="Username" onChange={(ev) => { setUsernameState(ev.target.value) }} />
@@ -67,5 +70,6 @@ export default function LoginPage() {
             </div>
         </form>
         </div>
+
     );
 }
