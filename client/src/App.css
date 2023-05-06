@@ -109,7 +109,9 @@ button{
   padding-left: 5px;
   padding-right: 5px;
   border: #fff;
-  background-color: rgb(100, 215, 80);
+  background-color: #333;
+  color: #fff;
+
 }
 .manageSubmit:hover{
   font-size:8px;
@@ -120,6 +122,7 @@ button{
   padding-right: 5px;
   border: #fff;
   background-color: rgb(101, 236, 77);
+  color: black;
 }
 
 .borderForm{
