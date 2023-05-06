@@ -7,6 +7,7 @@ export default function ManagePage() {
 
     const { username, setUsername } = useContext(UserContext)
     const [families, setFamilies] = useState([])
+    const [redirect, setRedirect] = useState(false)
 
     useEffect(() => {
         if (username) {
@@ -15,15 +16,19 @@ export default function ManagePage() {
                     setFamilies(data)
                 })
         } else {
-            console.log("not logged in")
+            setRedirect(true)
         }
     }, [])
 
+    if (redirect) {
+        return (<Navigate to={"/login"}></Navigate>)
+    }
+
     return (
         <>
-            
+
             <div className="text-xl text-center my-4 flex flex-col items-center">
-            <h2 className=' font-bold flex justify-center text-xl'>Your Families</h2> 
+                <h2 className=' font-bold flex justify-center text-xl'>Your Families</h2>
                 <div className="grid grid-cols-4 border">
                     {username && families.map((fam) => (
                         <button className=' bg-white hover:underline underline-offset-4 text-black m-4 p-2 mt-4 w-auto' key={fam._id}> {fam.name} </button>
@@ -35,8 +40,8 @@ export default function ManagePage() {
                     <button className='w-20 mt-4 text-sm'> Add Family </button>
                 </Link>
             </div>
-       
-            
+
+
         </>
     );
 }
