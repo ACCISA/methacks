@@ -42,7 +42,7 @@ export default function FormURL() {
                 </form>
             </div>
             <div className="Buttons mt-25 pd-[20px] flex justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-12">
-                <button id="folderBtn" className=" bg-blue-600 rounded-full w-28 mt-10">Upload Image</button>
+                <button id="folderBtn" className=" bg-orange-600 rounded-full w-28 mt-10">Upload Image</button>
                 <button id="uploadBtn" className=" bg-blue-600 rounded-full w-28 mt-10" >Find Recipe</button>
            
             </div>
