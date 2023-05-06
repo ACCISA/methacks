@@ -6,14 +6,14 @@ import { UserContext } from './UserContext';
 export default function HeaderIndex() {
   const { username, setUsername } = useContext(UserContext)
   function handleLogout() {
-    axios.post("/logout")
+    axios.post("/login")
     setUsername(null);
 
   }
 
   return (
-    <header className='mt-[50px] mb-[10px] bg-green-300 flex flex-row align-middle justify-between px-80'>
-      <Link to="/" className="logo text-3xl font-bold">
+    <header className='mt-[50px] mb-[10px] flex w-full left-0 justify-between px-80'>
+      <Link to="/" className="logo text-3xl font-bold ">
         NutriScan
       </Link>
 

@@ -38,7 +38,7 @@ export default function IndexPage() {
     });
   }, []);
 
-  
+
 
 
   function handleUrlForm(ev) {
@@ -70,28 +70,28 @@ export default function IndexPage() {
 
       </div>
       <div className="flex justify-center pt-10">
-    
-
-
-      
-      <form>
-  {username && <div><h1 className="mb-4">List of Groups:</h1></div>}
-  {username && documents && documents.map(data => (
-    <div key={data.name} className="flex items-center mb-1">
-      <input  type="radio" id={data.name} name="groupName" value={data.name} />
-      <label htmlFor={data.name} className="ml-2 mb-0">{data.name}</label>
-    </div>
-  ))}
-</form>
 
 
 
 
+        <form>
+          {username && <div><h1 className="mb-4">List of Groups:</h1></div>}
+          {username && documents && documents.map(data => (
+            <div key={data.name} className="flex items-center mb-1">
+              <input type="radio" id={data.name} name="groupName" value={data.name} />
+              <label htmlFor={data.name} className="ml-2 mb-0">{data.name}</label>
+            </div>
+          ))}
+        </form>
 
 
 
-    </div>
-    
+
+
+
+
+      </div>
+
     </div>
   )
 }
