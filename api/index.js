@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const User = require("./models/User.js");
+const Family = require("./models/Family.js");
 
 const app = express();
 const bcrypt = require("bcryptjs");
@@ -25,6 +26,47 @@ app.get("/test", (req, res) => {
   res.json("test ok");
 });
 
+app.post("/create", async (req, res) => {
+  const { token } = req.cookies;
+  const { name, restrictions, description, members } = req.body;
+  jwt.verify(token, jwtSecret, {}, async (err, user) => {
+    if (err) throw err;
+    try {
+      const famDoc = await Family.create({
+        owner: user.id,
+        name: name,
+        restrictions: restrictions,
+        description: description,
+        members: members,
+      });
+      res.json(famDoc);
+    } catch (errs) {
+      console.log("asdds");
+      console.log(errs);
+    }
+  });
+});
+
+app.get("/data", (req, res) => {
+  const { token } = req.cookies;
+  if (token) {
+    jwt.verify(token, jwtSecret, {}, async (err, user) => {
+      if (err) throw err;
+      try {
+        const fam = await Family.findOne({
+          owner: user.id,
+        });
+        res.json(fam);
+      } catch (errs) {
+        res.json("no family found");
+      }
+    });
+  } else {
+    console.log("sasd");
+    res.json(null);
+  }
+});
+
 app.post("/register", async (req, res) => {
   const { username, password } = req.body;
   try {
@@ -39,7 +81,7 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-  const {username,password } = req.body;
+  const { username, password } = req.body;
   const userDoc = await User.findOne({ username });
   if (userDoc) {
     const passOk = bcrypt.compareSync(password, userDoc.password);
