@@ -33,11 +33,7 @@ export default function IndexPage() {
 
 
   useEffect(() => {
-    axios.get("data").then(response => {
-        if (response.status == 401){
-            setDocuments(null)
-            return;
-        }
+    axios.get("/data").then(response => {
       setDocuments(response.data);
     });
   }, []);
@@ -63,15 +59,15 @@ export default function IndexPage() {
         <form onSubmit={handleUrlForm} className="w-96 mt-32 w-100 text-center">
           <input value={url} onChange={ev => { setUrl(ev.target.value) }} type="text" className='text-white h-10 placeholder:text-white mb-3 border-white px-4 bg-transparent rounded-md' placeholder="Paste URL" />
           <label htmlFor="file" className="flex items-center text-left w-full bg-transparent border-2 text-white py-2 px-4 h-10 rounded-md cursor-pointer border-white">
-            {file ? <FaCheckCircle className="mr-2"/> : null}
+            {file ? <FaCheckCircle className="mr-2" /> : null}
             Upload a file {file ? `- ${file.name}` : ''}
           </label>
-          <input id="file" name="file" type="file" className="hidden" onChange={handleFileUpload}/>
+          <input id="file" name="file" type="file" className="hidden" onChange={handleFileUpload} />
         </form>
       </div>
       <div className="Buttons mt-25 pd-[20px] flex justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-12">
         <button id="uploadBtn" className="bg-green-600 hover:bg-green-700 active:bg-green-800 rounded-md w-[125px] py-3 px-2 mt-10" >Find Recipe</button>
-     
+
       </div>
       <div className="flex justify-center pt-10">
     
