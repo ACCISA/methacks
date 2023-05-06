@@ -40,7 +40,7 @@ export default function AddFamilyForm() {
     <div>
       
       <h2 className=' font-bold flex justify-center text-xl'>Add A Group Form</h2>
-      <form className=' border border-solid  pl-10 pr-10 pt-5 pb-5 m-10 mx-36' onSubmit={handleAddFamily}>
+      <form className='backdrop-blur-md border border-solid  pl-10 pr-10 pt-5 pb-5 m-10 mx-80' onSubmit={handleAddFamily}>
         <div>
           <label htmlFor="username">Please enter the name of your new group:</label>
           <input type='text' placeholder='Group Name' className=' text-black w-1/3 mb-4' value={familyName} onChange={handleNameChange} />
@@ -48,7 +48,10 @@ export default function AddFamilyForm() {
           <input type='text' name="dietRestrictions" placeholder="Group Description" className=' text-black w-1/2 border' value={familyDescription} onChange={handleDescriptionChange} />
           {missingField && <div className="text-red-500">Missing field</div>}
 
-          <input type="submit" className='button manageSubmit' placeholder='Add' value='Add' />
+          <button type="submit" className='button manageSubmit'  value='Add' ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+      </button>
         </div>
       </form>
     </div>

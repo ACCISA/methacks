@@ -108,7 +108,10 @@ export default function AddMemberForm({ setParent }) {
                   <label htmlFor="dietRestrictions" className='my-16'>Please enter all your dietary restrictions separated by a comma:</label>
                   <input value={restr} onChange={handleRestrChange} type='text' name="dietRestrictions" placeholder="Enter your dietary restrictions" className='w-full border'></input>
                   {missingField && (<div className='text-red-500'>Missing Field</div>)}
-                  <button type="submit" className='button manageSubmit' placeholder='Add' value='Add'>Add</button>
+                  <button type="submit" className='button manageSubmit' value='Add' ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  </button>
                 </div>
               </form>
             </>)}

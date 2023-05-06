@@ -7,7 +7,7 @@ export default function AddFamily() {
     const { username, setUsername } = useContext(UserContext)
 
     const bgFam = {
-        backgroundImage: 'url("/src/images/spoon.jpg")',
+        backgroundImage: 'url("/src/images/manage.jpeg")',
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -25,7 +25,7 @@ export default function AddFamily() {
 
     return (
         <>
-        <div style={bgFam} id="bkng2" className="p-0">
+        <div style={bgFam} id="bkng2" className="p-0 ">
         <HeaderIndex />
         <div className=" mt-14"></div>
         <AddFamilyForm />
