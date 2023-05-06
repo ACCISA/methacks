@@ -1,9 +1,13 @@
+import { useContext } from "react";
 import AddFamilyForm from "../AddFamilyForm";
-
+import { UserContext } from "../UserContext";
+import { Navigate } from "react-router-dom";
 export default function AddFamily() {
+    const { username, setUsername } = useContext(UserContext)
+
     const bgFam = {
         backgroundImage: 'url("src/images/spoon.jpg")',
-    
+
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -14,12 +18,17 @@ export default function AddFamily() {
         width: "100%",
         height: '100%'
     }
+
+    if (!username) {
+        return (<Navigate to={"/login"} />)
+    }
+
     return (
-        
-      
-           
-           <AddFamilyForm />
-        
-        
+
+
+
+        <AddFamilyForm />
+
+
     );
 }
