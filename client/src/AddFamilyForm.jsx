@@ -3,10 +3,25 @@ import { Navigate } from "react-router-dom";
 
 export default function AddFamilyForm() {
   const [redirect, setRedirect] = useState(false);
+  const [missingField, setMissingField] = useState(false);
+  const [familyName, setFamilyName] = useState('');
+  const [familyDescription, setFamilyDescription] = useState('');
 
   const handleAddFamily = (event) => {
-    event.preventDefault();
-    setRedirect(true);
+    if (!familyName.trim() || !familyDescription.trim()) {
+      setMissingField(true);
+      event.preventDefault();
+    } else {
+      setRedirect(true);
+    }
+  };
+
+  const handleNameChange = (event) => {
+    setFamilyName(event.target.value);
+  };
+
+  const handleDescriptionChange = (event) => {
+    setFamilyDescription(event.target.value);
   };
 
   if (redirect) {
@@ -19,12 +34,14 @@ export default function AddFamilyForm() {
       <form className=' border border-solid  p-3' onSubmit={handleAddFamily}>
         <div>
           <label htmlFor="username">Please enter the name of your new group:</label>
-          <input type='text' placeholder='Group Name' className='w-1/3 mb-4' />
+          <input type='text' placeholder='Group Name' className='w-1/3 mb-4' value={familyName} onChange={handleNameChange} />
           <label htmlFor="groupDescription" className='my-16'>Please write a brief description of your group:</label>
-          <input type='text' name="dietRestrictions" placeholder="Group Description" className='w-full border'></input>
+          <input type='text' name="dietRestrictions" placeholder="Group Description" className='w-full border' value={familyDescription} onChange={handleDescriptionChange} />
           <input type="submit" className='button manageSubmit' placeholder='Add' value='Add' />
         </div>
+        {missingField && <div className="text-red-500">Missing field</div>}
       </form>
+   
     </div>
   );
 }
