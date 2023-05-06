@@ -26,6 +26,38 @@ app.get("/test", (req, res) => {
   res.json("test ok");
 });
 
+app.post("/manage/:id", async (req, res) => {
+  const { id } = req.params;
+  const { token } = req.cookies;
+  const { members, removed } = req.body;
+  // console.log(members);
+  const famDoc = await Family.findById(id);
+  let restrRemove = "";
+  for (let i = 0; i < members.length; i++) {
+    if (members[i].member === removed) {
+      restrRemove += members[i].restrictions;
+      members.splice(i, 1);
+    }
+  }
+  let newRestr = famDoc.restrictions;
+  for (let i = 0; i < newRestr.length; i++) {
+    if (newRestr[i] === restrRemove) {
+      newRestr.splice(i, 1);
+    }
+  }
+  console.log(newRestr);
+  let a = famDoc.owner;
+  let b = famDoc.name;
+  let c = famDoc.description;
+  // console.log(famDoc);
+  // famDoc.set({
+  //   owner: a,
+  //   name: b,
+  //   description: c,
+  // });
+  res.json("ok");
+});
+
 app.get("/manage/:id", (req, res) => {
   const { id } = req.params;
   const { token } = req.cookies;
