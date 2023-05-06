@@ -74,16 +74,17 @@ export default function IndexPage() {
 
 
       
-      <form className="flex flex-col ml-2">
-  {username && documents &&
-    documents.map(data => (  <><h1 className="">List of Documents:</h1>
-      <div key={data.name} className="flex items-center mb-1">
-        <input className="mt-1.5" type="radio" id={data.name} name="groupName" value={data.name} />
-        <label htmlFor={data.name} className="ml-1">{data.name}</label>
-      </div>
-      </>
-    ))}
+      <form>
+  {username && <div><h1 className="mb-4">List of Groups:</h1></div>}
+  {username && documents && documents.map(data => (
+    <div key={data.name} className="flex items-center mb-1">
+      <input  type="radio" id={data.name} name="groupName" value={data.name} />
+      <label htmlFor={data.name} className="ml-2 mb-0">{data.name}</label>
+    </div>
+  ))}
 </form>
+
+
 
 
 
