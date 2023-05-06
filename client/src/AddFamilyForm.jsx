@@ -7,7 +7,19 @@ export default function AddFamilyForm() {
   const [missingField, setMissingField] = useState(false);
   const [familyName, setFamilyName] = useState('');
   const [familyDescription, setFamilyDescription] = useState('');
+  const bgFam = {
+      backgroundImage: 'url("src/images/pic.jpg")',
 
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      color: "white",
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      width: "100%",
+      height: '100%'
+  }
   const handleAddFamily = (event) => {
     if (!familyName.trim() || !familyDescription.trim()) {
       setMissingField(true);
@@ -29,6 +41,7 @@ export default function AddFamilyForm() {
   const handleDescriptionChange = (event) => {
     setFamilyDescription(event.target.value);
   };
+  
 
   if (redirect) {
     return <Navigate to="/manage" />;
@@ -36,6 +49,7 @@ export default function AddFamilyForm() {
 
   return (
     <div>
+      <div style={bgFam} id="bkng5" className="p-0 h-full  flex-col justify-center align-middle">
       <h2 className=' font-bold flex justify-center text-xl'>Add A Group Form</h2>
       <form className=' border border-solid  p-3' onSubmit={handleAddFamily}>
         <div>
@@ -48,7 +62,7 @@ export default function AddFamilyForm() {
           <input type="submit" className='button manageSubmit' placeholder='Add' value='Add' />
         </div>
       </form>
-
+    </div>
     </div>
   );
 }

@@ -15,7 +15,7 @@ export default function RegisterPage() {
     const [missingUsername, setMissingUsername] = useState(false)
     const [redirect, setRedirect] = useState(false)
     const bg3 = {
-        backgroundImage: 'url("src/images/plain.jpg")',
+        backgroundImage: 'url("src/images/pic.jpg")',
 
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -87,13 +87,13 @@ export default function RegisterPage() {
     }
 
     return (
-        <div style={bg3} id="bkng3" className="p-0 h-full  flex-col justify-center align-middle">
+        <div style={bg3} id="bkng3" className="p-0 h-1/2  flex-col justify-left align-left">
               <HeaderIndex />
         <form className="register" onSubmit={handleRegister}>
             <div className="searchBar backdrop-blur-sm rounded-full content-center mt-[190px] flex flex-col items-center justify-center">
-                <input className="rounded-md h-10 px-4 bg-white mb-3 block w-full" value={usernameState} onChange={usernameOnChange} type="text" placeholder="Username" />
-                <input className="rounded-md h-10 px-4 bg-white mb-3 block w-full" value={password} onChange={passOnChange} type="password" placeholder="Password" />
-                <input className="rounded-md h-10 px-4 bg-white mb-3 block w-full" value={confirmPass} onChange={confirmPassOnChange} type="Password" placeholder="Confirm Password" />
+                <input className="rounded-md h-10 px-4 bg-transparent mb-3 block w-full" value={usernameState} onChange={usernameOnChange} type="text" placeholder="Username" />
+                <input className="rounded-md h-10 px-4 bg-transparent mb-3 block w-full" value={password} onChange={passOnChange} type="password" placeholder="Password" />
+                <input className="rounded-md h-10 px-4 bg-transparent mb-3 block w-full" value={confirmPass} onChange={confirmPassOnChange} type="Password" placeholder="Confirm Password" />
                 {!validPass && <div className="text-red-500">Passwords do not match</div>}
                 {dupeUsername && <div className="text-red-500">This username is already taken</div>}
                 {missingUsername && <div className="text-red-500">Missing username field</div>}

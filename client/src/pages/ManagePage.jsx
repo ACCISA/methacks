@@ -8,7 +8,19 @@ export default function ManagePage() {
     const { username, setUsername } = useContext(UserContext)
     const [families, setFamilies] = useState([])
     const [redirect, setRedirect] = useState(false)
+    const bgManage = {
+        backgroundImage: 'url("src/images/pic.jpg")',
 
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        color: "white",
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        width: "100%",
+        height: '100%'
+    }
     useEffect(() => {
         if (username) {
             axios.get("/data")
@@ -26,7 +38,7 @@ export default function ManagePage() {
 
     return (
         <>
-
+<div style={bgManage} id="bkng" className="p-0 h-full  flex-col justify-center align-middle">
             <div className="text-xl text-center my-4 flex flex-col items-center">
                 <h2 className=' font-bold flex justify-center text-xl'>Your Groups</h2>
                 <div className="grid grid-cols-4 border">
@@ -43,7 +55,7 @@ export default function ManagePage() {
                     <button className='w-20 mt-4 text-sm'> Add Group </button>
                 </Link>
             </div>
-
+        </div>
 
         </>
     );

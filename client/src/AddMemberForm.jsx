@@ -9,6 +9,7 @@ export default function AddMemberForm({ setParent }) {
   const [member, setMember] = useState('')
   const [restr, setRestr] = useState('')
   const { id } = useParams();
+  
   function handleAddMember(ev) {
     ev.preventDefault();
     if (member.length == 0 || restr.length == 0) {
