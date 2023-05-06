@@ -185,7 +185,7 @@ app.get("/data", (req, res) => {
       }
     });
   } else {
-    res.json("no token provided");
+    res.status(401).json("no token provided");
   }
 });
 
