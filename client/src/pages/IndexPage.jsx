@@ -1,5 +1,5 @@
-import Post from "../Post";
-import React, { useState, useEffect } from 'react';
+import { UserContext } from "../UserContext";
+import React, { useContext, useState, useEffect } from 'react';
 import Header from '../Header';
 import HeaderIndex from "../HeaderIndex";
 import { FaCheckCircle } from "react-icons/fa";
@@ -9,7 +9,8 @@ export default function IndexPage() {
   const [url, setUrl] = useState('');
   const [file, setFile] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [documents, setDocuments] = useState([]);
+  const [documents, setDocuments] = useState(null);
+  const { username, setUsername } = useContext(UserContext)
 
 
   const bg = {
@@ -33,15 +34,16 @@ export default function IndexPage() {
 
   useEffect(() => {
     axios.get("data").then(response => {
+        if (response.status == 401){
+            setDocuments(null)
+            return;
+        }
       setDocuments(response.data);
     });
   }, []);
 
   
-  useEffect(() => {
-    const storedLoginStatus = localStorage.getItem("isLoggedIn");
-    setIsLoggedIn(storedLoginStatus === "true");
-  }, []);
+
 
   function handleUrlForm(ev) {
     ev.preventDefault()
@@ -72,16 +74,21 @@ export default function IndexPage() {
      
       </div>
       <div className="flex justify-center pt-10">
-      <h1 className="">List of Documents:</h1>
+    
+
+
+      
       <form className="flex flex-col ml-2">
-  {documents &&
-    documents.map(data => (
+  {username && documents &&
+    documents.map(data => (  <><h1 className="">List of Documents:</h1>
       <div key={data.name} className="flex items-center mb-1">
         <input className="mt-1.5" type="radio" id={data.name} name="groupName" value={data.name} />
         <label htmlFor={data.name} className="ml-1">{data.name}</label>
       </div>
+      </>
     ))}
 </form>
+
 
 
 
