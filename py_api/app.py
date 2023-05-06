@@ -35,21 +35,25 @@ def get_ingredients_from_image():
 
             print(recipe)
 
-    #         url = "https://api.spoonacular.com/recipes/extract"
-    #         params = {
-    #             "apiKey": "e3c9cd8d2998470fbaa639d5a4dc0fa0",
-    #             "forceExtraction": True,
-    #             "url": recipe
-    #         }
+            url = "https://api.spoonacular.com/recipes/extract"
+            params = {
+                "apiKey": "e3c9cd8d2998470fbaa639d5a4dc0fa0",
+                "forceExtraction": True,
+                "url": recipe
+            }
 
-    #         response = requests.get(url, params=params)
-    #         data = response.json()
-    #         ingredients = data["extendedIngredients"]
-    #         clean_ingredient_names = [ingredient["nameClean"]
-    #                                   for ingredient in ingredients]
-    #         return clean_ingredient_names
-    # return "Virgule"
+            response = requests.get(url, params=params)
+            data = response.json()
+            ingredients = data["extendedIngredients"]
+            clean_ingredient_names = [ingredient["nameClean"]
+                                      for ingredient in ingredients]
+            return clean_ingredient_names
+    return "Virgule"
 
+
+@app.route("/text",methods=['POST','GET'])
+def teast():
+    return "ye"
 
 @app.route("/url", methods=['POST'])
 def get_ingredients_from_URL():
@@ -60,9 +64,14 @@ def get_ingredients_from_URL():
     #     print(url_recipe)
 
     if request.method == 'POST':
-        url = "https://api.spoonacular.com/recipes/extract"
-        url_recipe = request.files.get('snap')
 
+        url = "https://api.spoonacular.com/recipes/extract"
+        # url_recipe = request.files.get('snap')
+        json = request.json
+        print(json)
+        url_recipe = json['snap']
+        print(request.files)
+        print(url_recipe, "asd")
         params = {
             "apiKey": "e3c9cd8d2998470fbaa639d5a4dc0fa0",
             "url": url_recipe,
