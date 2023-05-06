@@ -5,7 +5,10 @@ import IndexPage from "./pages/IndexPage"
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import { UserContextProvider } from './UserContext';
+import axios from "axios"
 
+axios.defaults.baseURL = "http://localhost:4000";
+axios.defaults.withCredentials = true;
 
 
 function App() {
