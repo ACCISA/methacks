@@ -92,7 +92,7 @@ export default function AddMemberForm({ setParent }) {
                     <div className="flex border justify-between">
                       <input id={member._id} onChange={handleRadioChange} type="checkbox" className='text-sm w-10' />
                       <div className="mx-2">Name: {member.username}</div>
-                      <div>Restrictions: {member.restrictions}</div>
+                      <div className='font-sans'>Restrictions: {member.restrictions}</div>
                     </div>
                   )))}
                   <div>
