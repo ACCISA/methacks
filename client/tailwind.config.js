@@ -1,10 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
+  content: ["index,html",
     "./src/**/*.{js,jsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'background': "url('background.jpg')",
+      },
+      fontFamily: {
+      Playfair: ['Playfair', 'arial'],
+     },
+    },
+    
   },
   plugins: [],
 }
