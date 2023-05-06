@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      sans: ['arial','cursive']
+      sans: ['didot','cursive']
     }
   },
   plugins: [],
