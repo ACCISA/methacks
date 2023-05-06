@@ -2,34 +2,22 @@ import { Link } from 'react-router-dom';
 import './App.css';
 import { useContext } from 'react';
 import { UserContext } from './UserContext';
-import axios from "axios"
 
-
-export default function Header() {
-  const { username, setUsername } = useContext(UserContext);
-
+export default function HeaderIndex() {
+  const { username, setUsername } = useContext(UserContext)
   function handleLogout() {
     setUsername(null);
   }
-  function handleTest() {
-    axios.get("/data", { username })
-    // axios.post("/create", {
-    //   name: "testing",
-    //   restrictions: ["res1", "res2", "res3"],
-    //   description: "this is a test",
-    //   members: { "friend1": "halal", "friend2": "diabetes" }
-    // })
-  }
+
   return (
-    <header>
-      <Link to="/" className="logo">
-        MyBlog
+    <header className='mt-[50px] mb-[10px] flex flex-row align-middle justify-between px-80'>
+      <Link to="/" className="logo text-3xl font-bold">
+        NutriScan
       </Link>
 
       <nav>
-        <Link onClick={handleTest}>Test</Link>
         {username && (
-          <div>
+          <div className='align-middle justify-center ml-16'>
             <Link to="/manage" className="mr-2">
               Manage
             </Link>
@@ -40,7 +28,7 @@ export default function Header() {
         )}
 
         {!username && (
-          <div>
+          <div className='align-middle justify-center ml-16'>
             <Link to="/login" className="mr-2">
               Login
             </Link>
