@@ -11,6 +11,7 @@ export default function AddFamilyForm() {
   const handleAddFamily = (event) => {
     if (!familyName.trim() || !familyDescription.trim()) {
       setMissingField(true);
+       event.preventDefault();
 
     } else {
       event.preventDefault();

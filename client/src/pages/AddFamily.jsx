@@ -15,11 +15,11 @@ export default function AddFamily() {
         height: '100%'
     }
     return (
-        <>
-      <div style={bgFam} id="bkng4" className="p-0 h-full  flex-col justify-center align-middle">
+        
+      
            
-             <AddFamilyForm />
-        </div>   
-        </>
-    )
+           <AddFamilyForm />
+        
+        
+    );
 }
