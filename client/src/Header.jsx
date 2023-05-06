@@ -10,7 +10,7 @@ export default function HeaderIndex() {
   }
 
   return (
-    <header className='mt-[50px] mb-[10px] flex flex-row align-middle justify-between px-80'>
+    <header className='mt-[50px] mb-[10px] bg-green-300 flex flex-row align-middle justify-between px-80'>
       <Link to="/" className="logo text-3xl font-bold">
         NutriScan
       </Link>
