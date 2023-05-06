@@ -8,6 +8,7 @@ import numpy as np
 import io
 import pytesseract
 from PIL import Image
+from flask_cors import CORS
 import numpy as np
 import requests
 import json
@@ -17,6 +18,7 @@ import json
 from flask import Flask, request
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/image", methods=['POST'])
@@ -53,27 +55,27 @@ def get_ingredients_from_image():
 def get_ingredients_from_URL():
 
     print("Getting the ingredients from the URL")
-    if request.method == 'POST':
-        url_recipe = request.form.get('snap')
-        print(url_recipe)
-
     # if request.method == 'POST':
-    #     url = "https://api.spoonacular.com/recipes/extract"
-        # url_reicpe = request.files.get('snap')
+    #     url_recipe = request.form.get('snap')
+    #     print(url_recipe)
 
-    #     params = {
-    #         "apiKey": "e3c9cd8d2998470fbaa639d5a4dc0fa0",
-    #         "url": url,
-    #     }
+    if request.method == 'POST':
+        url = "https://api.spoonacular.com/recipes/extract"
+        url_recipe = request.files.get('snap')
 
-    #     response = requests.get(url_recipe, params=params)
-    #     recipe_data = json.loads(response.text)
-    #     ingredients_list = recipe_data["extendedIngredients"]
-    #     ingredient_names = [ingredient["nameClean"]
-    #                         for ingredient in ingredients_list]
-    #     return (ingredient_names)
+        params = {
+            "apiKey": "e3c9cd8d2998470fbaa639d5a4dc0fa0",
+            "url": url_recipe,
+        }
+
+        response = requests.get(url_recipe, params=params)
+        recipe_data = json.loads(response.text)
+        ingredients_list = recipe_data["extendedIngredients"]
+        ingredient_names = [ingredient["nameClean"]
+                            for ingredient in ingredients_list]
+        return (ingredient_names)
     return 'Virgule'
 
 
-# if __name__ == "__main__":
-#     app.run(host="0.0.0.0",port=5173)
+if __name__ == "__main__":
+    app.run(debug=True,port=4040)
