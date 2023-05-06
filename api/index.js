@@ -26,6 +26,18 @@ app.get("/test", (req, res) => {
   res.json("test ok");
 });
 
+app.get("/manage/:id", (req, res) => {
+  const { id } = req.params;
+  const { token } = req.cookies;
+  jwt.verify(token, jwtSecret, {}, async (err, user) => {
+    if (err) {
+      res.json(err);
+      return;
+    }
+    res.json(await Family.findById(id));
+  });
+});
+
 app.post("/create", async (req, res) => {
   const { token } = req.cookies;
   const { name, restrictions, description, members } = req.body;
