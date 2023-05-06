@@ -3,7 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const User = require("./models/User.js");
 const Family = require("./models/Family.js");
-
+const Member = require("./models/Member.js");
 const app = express();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -45,17 +45,24 @@ app.post("/manage/:id", async (req, res) => {
       newRestr.splice(i, 1);
     }
   }
-  console.log(newRestr);
+  // console.log(newRestr);
   let a = famDoc.owner;
   let b = famDoc.name;
   let c = famDoc.description;
-  // console.log(famDoc);
-  // famDoc.set({
-  //   owner: a,
-  //   name: b,
-  //   description: c,
-  // });
-  res.json("ok");
+  let membersObj = {};
+  for (let i = 0; i < members.length; i++) {
+    membersObj[members[i].member] = members[i].restrictions;
+  }
+
+  famDoc.set({
+    owner: a,
+    name: b,
+    description: c,
+    members: membersObj,
+    restrictions: newRestr,
+  });
+  await famDoc.save();
+  res.json();
 });
 
 app.get("/manage/:id", (req, res) => {
@@ -82,6 +89,23 @@ app.delete("/manage/:id", (req, res) => {
   });
 });
 
+app.get("/recent", async (req, res) => {
+  const { token } = req.cookies;
+  if (token) {
+    jwt.verify(token, jwtSecret, {}, async (err, user) => {
+      if (err) throw err;
+      try {
+        const membersFound = await Member.find({});
+        res.json(membersFound);
+      } catch (errs) {
+        console.log(errs);
+      }
+    });
+  } else {
+    res.status(401).json("no token provided");
+  }
+});
+
 app.put("/manage/:id", async (req, res) => {
   const { id } = req.params;
   const { token } = req.cookies;
@@ -93,6 +117,10 @@ app.put("/manage/:id", async (req, res) => {
       return;
     }
     console.log("sd");
+    await Member.create({
+      username: member,
+      restrictions: restrictionsPut,
+    });
     const famDoc = await Family.findById(id);
     let restrictions = famDoc.restrictions;
 
@@ -155,6 +183,20 @@ app.get("/data", (req, res) => {
       } catch (errs) {
         res.json("no family found");
       }
+    });
+  } else {
+    res.json("no token provided");
+  }
+});
+
+app.get("/profile", (req, res) => {
+  const { token } = req.cookies;
+  if (token) {
+    jwt.verify(token, jwtSecret, {}, async (err, user) => {
+      if (err) throw err;
+      const { username, _id } = await User.findById(user.id);
+
+      res.status(200).json({ username, _id });
     });
   } else {
     res.json("no token provided");

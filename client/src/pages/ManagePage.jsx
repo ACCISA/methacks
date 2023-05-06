@@ -11,7 +11,7 @@ export default function ManagePage() {
 
     useEffect(() => {
         if (username) {
-            axios.get("data")
+            axios.get("/data")
                 .then(({ data }) => {
                     setFamilies(data)
                 })
