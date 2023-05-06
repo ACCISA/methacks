@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import axios from "axios";
 
 export default function AddFamilyForm() {
   const [redirect, setRedirect] = useState(false);
@@ -10,9 +11,14 @@ export default function AddFamilyForm() {
   const handleAddFamily = (event) => {
     if (!familyName.trim() || !familyDescription.trim()) {
       setMissingField(true);
-      event.preventDefault();
+
     } else {
+      event.preventDefault();
       setRedirect(true);
+      axios.post("/addgroup", {
+        name: familyName,
+        description: familyDescription
+      })
     }
   };
 
@@ -37,11 +43,12 @@ export default function AddFamilyForm() {
           <input type='text' placeholder='Group Name' className='w-1/3 mb-4' value={familyName} onChange={handleNameChange} />
           <label htmlFor="groupDescription" className='my-16'>Please write a brief description of your group:</label>
           <input type='text' name="dietRestrictions" placeholder="Group Description" className='w-full border' value={familyDescription} onChange={handleDescriptionChange} />
+          {missingField && <div className="text-red-500">Missing field</div>}
+
           <input type="submit" className='button manageSubmit' placeholder='Add' value='Add' />
         </div>
-        {missingField && <div className="text-red-500">Missing field</div>}
       </form>
-   
+
     </div>
   );
 }

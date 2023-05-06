@@ -96,15 +96,11 @@ app.put("/manage/:id", async (req, res) => {
     const famDoc = await Family.findById(id);
     let restrictions = famDoc.restrictions;
 
-    console.log("c");
-    console.log(restrictionsPut.length);
     for (let i = 0; i < restrictionsPut.length; i++) {
-      console.log("lo");
       restrictions.push(restrictionsPut[i]);
     }
     // famDoc.members[member] = restrictionsPut;
     famDoc.members.set(member, restrictionsPut);
-    console.log(famDoc.members);
     let a = famDoc.owner;
     let b = famDoc.name;
     let c = famDoc.description;
@@ -116,7 +112,6 @@ app.put("/manage/:id", async (req, res) => {
       restrictions,
       members: e,
     });
-    console.log("cs");
     await famDoc.save();
     res.json("updated");
   });
@@ -217,6 +212,26 @@ app.get("/profile", (req, res) => {
 
 app.post("/logout", (req, res) => {
   res.cookie("token", "").json(true);
+});
+
+app.post("/addgroup", (req, res) => {
+  const { token } = req.cookies;
+  const { name, description } = req.body;
+  jwt.verify(token, jwtSecret, {}, async (err, user) => {
+    if (err) throw err;
+    try {
+      const famDoc = await Family.create({
+        owner: user.id,
+        name: name,
+        restrictions: [],
+        description: description,
+        members: {},
+      });
+      res.json(famDoc);
+    } catch (errs) {
+      console.log(errs);
+    }
+  });
 });
 
 app.listen(4000);
