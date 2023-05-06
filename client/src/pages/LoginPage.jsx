@@ -19,6 +19,7 @@ export default function LoginPage() {
         })
             .then(function (res) {
                 if (res.status == 200) {
+                    setUsername(usernameState)
                     setRedirect(true)
                 }
             })
@@ -34,7 +35,6 @@ export default function LoginPage() {
                 console.log('no errors')
             })
 
-        setUsername(usernameState)
     }
 
     if (redirect) {
