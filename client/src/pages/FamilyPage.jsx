@@ -1,14 +1,26 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useContext, useEffect, useState } from "react"
+import { Navigate, useParams } from "react-router-dom"
 import axios from "axios"
+import AddMemberForm from "../AddMemberForm"
+import { UserContext } from '../UserContext';
 
 export default function FamilyPage() {
     const { id } = useParams()
     const [fam, setFam] = useState({})
     const [name, setName] = useState('')
     const [members, setMembers] = useState([])
+    const { username, setUsername } = useContext(UserContext)
+    const [redirect, setRedirect] = useState(false)
+
+    function handleRemove() {
+        alert("This group has been removed")
+        axios.delete("/manage/" + id)
+        setRedirect(true)
+    }
+
     useEffect(() => {
         if (!id) return;
+        if (!username) return;
         axios.get("/manage/" + id)
             .then(({ data }) => {
                 console.log("Asd")
@@ -28,12 +40,24 @@ export default function FamilyPage() {
 
     }, [])
 
+    if (!username) {
+        return (<Navigate to={"/login"} />)
+    }
+
+    if (redirect) {
+        return (<Navigate to={"/manage"} />)
+    }
 
     return (
         <div>
             {name && (
                 <div>
-                    <div>{name}'s Members</div>
+                    <div className="flex justify-between">
+                        <div className="capitalize">{name}'s Members</div>
+                        <div className="text-sm">
+                            <button onClick={handleRemove} className="text-sm px-2 hover:bg-red-500 m-2">Remove Group</button>
+                        </div>
+                    </div>
                     <div className="border p-2">
                         {fam && (members.map((member) => (
                             <div className="flex border">
@@ -42,6 +66,7 @@ export default function FamilyPage() {
 
                             </div>
                         )))}
+                        <AddMemberForm />
                     </div>
                 </div>
             )}

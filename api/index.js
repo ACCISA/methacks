@@ -38,6 +38,58 @@ app.get("/manage/:id", (req, res) => {
   });
 });
 
+app.delete("/manage/:id", (req, res) => {
+  const { id } = req.params;
+  const { token } = req.cookies;
+  jwt.verify(token, jwtSecret, {}, async (err, user) => {
+    if (err) {
+      res.json(err);
+      return;
+    }
+    res.json(await Family.deleteOne({ _id: id }));
+  });
+});
+
+app.put("/manage/:id", async (req, res) => {
+  const { id } = req.params;
+  const { token } = req.cookies;
+  const { member, restrictionsPut } = req.body;
+
+  jwt.verify(token, jwtSecret, {}, async (err, user) => {
+    if (err) {
+      res.json(err);
+      return;
+    }
+    console.log("sd");
+    const famDoc = await Family.findById(id);
+    let restrictions = famDoc.restrictions;
+
+    console.log("c");
+    console.log(restrictionsPut.length);
+    for (let i = 0; i < restrictionsPut.length; i++) {
+      console.log("lo");
+      restrictions.push(restrictionsPut[i]);
+    }
+    // famDoc.members[member] = restrictionsPut;
+    famDoc.members.set(member, restrictionsPut);
+    console.log(famDoc.members);
+    let a = famDoc.owner;
+    let b = famDoc.name;
+    let c = famDoc.description;
+    let e = famDoc.members;
+    famDoc.set({
+      owner: a,
+      name: b,
+      description: c,
+      restrictions,
+      members: e,
+    });
+    console.log("cs");
+    await famDoc.save();
+    res.json("updated");
+  });
+});
+
 app.post("/create", async (req, res) => {
   const { token } = req.cookies;
   const { name, restrictions, description, members } = req.body;
@@ -53,7 +105,6 @@ app.post("/create", async (req, res) => {
       });
       res.json(famDoc);
     } catch (errs) {
-      console.log("asdds");
       console.log(errs);
     }
   });
@@ -73,15 +124,13 @@ app.get("/data", (req, res) => {
         for (const index in fam) {
           dataArr.push(fam[index]);
         }
-        console.log(dataArr);
         res.json(dataArr);
       } catch (errs) {
         res.json("no family found");
       }
     });
   } else {
-    console.log("sasd");
-    res.json(null);
+    res.json("no token provided");
   }
 });
 
