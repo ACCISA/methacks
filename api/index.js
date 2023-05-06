@@ -113,7 +113,7 @@ app.put("/manage/:id", async (req, res) => {
       members: e,
     });
     await famDoc.save();
-    res.json("updated");
+    res.json(famDoc.members);
   });
 });
 

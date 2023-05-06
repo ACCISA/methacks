@@ -20,7 +20,7 @@ export default function AddMemberForm() {
       member, restrictionsPut: dataRestr
     })
 
-    // setRedirect(true);
+    setRedirect(true);
   }
 
   function handleMemberChange(ev) {
@@ -53,7 +53,7 @@ export default function AddMemberForm() {
           )}
         </div>
       )}
-      {redirect && <Navigate to="/manage" />}
+      {redirect && <Navigate to={"/manage/" + id} />}
     </>
   );
 }
