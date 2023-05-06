@@ -40,7 +40,7 @@ export default function AddFamilyForm() {
     <div>
       
       <h2 className=' font-bold flex justify-center text-xl'>Add A Group Form</h2>
-      <form className='backdrop-blur-md border border-solid  pl-10 pr-10 pt-5 pb-5 m-10 mx-36' onSubmit={handleAddFamily}>
+      <form className='backdrop-blur-md border border-solid  pl-10 pr-10 pt-5 pb-5 m-10 mx-80' onSubmit={handleAddFamily}>
         <div>
           <label htmlFor="username">Please enter the name of your new group:</label>
           <input type='text' placeholder='Group Name' className=' text-black w-1/3 mb-4' value={familyName} onChange={handleNameChange} />
