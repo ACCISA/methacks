@@ -43,9 +43,9 @@ export default function AddFamilyForm() {
       <form className=' border border-solid  p-3' onSubmit={handleAddFamily}>
         <div>
           <label htmlFor="username">Please enter the name of your new group:</label>
-          <input type='text' placeholder='Group Name' className='w-1/3 mb-4' value={familyName} onChange={handleNameChange} />
+          <input type='text' placeholder='Group Name' className=' text-black w-1/3 mb-4' value={familyName} onChange={handleNameChange} />
           <label htmlFor="groupDescription" className='my-16'>Please write a brief description of your group:</label>
-          <input type='text' name="dietRestrictions" placeholder="Group Description" className='w-full border' value={familyDescription} onChange={handleDescriptionChange} />
+          <input type='text' name="dietRestrictions" placeholder="Group Description" className=' text-black w-full border' value={familyDescription} onChange={handleDescriptionChange} />
           {missingField && <div className="text-red-500">Missing field</div>}
 
           <input type="submit" className='button manageSubmit' placeholder='Add' value='Add' />
