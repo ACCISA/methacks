@@ -1,9 +1,10 @@
 import Post from "../Post";
-
+import { useState } from "react";
+import Header from '../Header';
+import HeaderIndex from "../HeaderIndex";
 
 export default function IndexPage(){
-    return (
-          const [url, setUrl] = useState('')
+    const [url, setUrl] = useState('')
 
 
     const bg = {
@@ -32,7 +33,7 @@ export default function IndexPage(){
     return (
 
         <div style={bg} id= "bkng" className="p-0 h-full  flex-col justify-center align-middle">
-            <Header/>
+            <HeaderIndex/>
 
             <div class=" searchBar content-center mt-[48px] flex items-center justify-center">
                 <form onSubmit={handleUrlForm} className="w-96 mt-32 w-100 text-center">
