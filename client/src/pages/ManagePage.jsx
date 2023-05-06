@@ -2,6 +2,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../UserContext';
 import axios from "axios"
+import HeaderIndex from "../HeaderIndex";
 
 export default function ManagePage() {
 
@@ -39,7 +40,9 @@ export default function ManagePage() {
     return (
         <>
 <div style={bgManage} id="bkng" className="p-0 h-full  flex-col justify-center align-middle">
-            <div className="text-xl text-center my-4 flex flex-col items-center">
+    <div><HeaderIndex /></div>
+
+            <div className=" mt-36 text-xl text-center my-4 flex flex-col items-center">
                 <h2 className=' font-bold flex justify-center text-xl'>Your Groups</h2>
                 <div className="grid grid-cols-4 border">
                     {username && families.map((fam) => (
