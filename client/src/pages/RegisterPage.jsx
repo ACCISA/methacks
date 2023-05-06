@@ -15,7 +15,7 @@ export default function RegisterPage() {
     const [missingUsername, setMissingUsername] = useState(false)
     const [redirect, setRedirect] = useState(false)
     const bg3 = {
-        backgroundImage: 'url("src/images/bkg3.jpg")',
+        backgroundImage: 'url("src/images/plain.jpg")',
 
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
