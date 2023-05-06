@@ -146,49 +146,40 @@ export default function IndexPage() {
   return (
     <div style={bg} id="bkng" className="p-0 h-full  flex-col justify-center align-middle">
       <HeaderIndex />
-<<<<<<< Updated upstream
       <div className="searchBar content-center flex items-center justify-center">
-        <div className="backdrop-blur-md w-1/2 text-center rounded-md border text-lg">Welcome to NutriScan, where allergies don't limit your taste buds! Discover delicious recipes that cater to your dietary needs with our innovative platform. Input your allergies, and we'll filter out any potentially harmful ingredients, so you can enjoy your meals safely. Join our community of recipe enthusiasts today and embark on a culinary journey filled with tantalizing flavors and vibrant connections. <br/>
-    
+        <div className="backdrop-blur-md mt-8 w-1/2 text-center rounded-md border text-lg">Welcome to NutriScan, where allergies don't limit your taste buds! Discover delicious recipes that cater to your dietary needs with our innovative platform. Input your allergies, and we'll filter out any potentially harmful ingredients, so you can enjoy your meals safely. Join our community of recipe enthusiasts today and embark on a culinary journey filled with tantalizing flavors and vibrant connections. <br />
+
         </div>
-        <form onSubmit={handleUrlForm} className="mt-24 w-10 text-center">
-          <input value={url} onChange={ev => { setUrl(ev.target.value) }} type="text" className='text-white h-10 placeholder:text-white mb-3 border-white px-4 bg-transparent rounded-md ' placeholder="Paste URL" />
-          <label htmlFor="file" className="flex items-center text-left border-solid md:border-dotted w-full bg-transparent border-2 text-white py-2 px-4 h-10 rounded-md cursor-pointer border-white">
-            {file ? <FaCheckCircle className="mr-2" /> : null}
-            Upload a file {file ? `- ${file.name}` : ''}
-          </label>
-          <input id="file" name="file" type="file" className="hidden" onChange={handleFileUpload} />
-        </form>
+
       </div>
       <div className="Buttons mt-25 pd-[20px] flex justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-12">
-        <button id="uploadBtn" className="bg-green-600 hover:bg-green-700 active:bg-green-800 rounded-md w-[125px] py-3 px-2 mt-10" >Find Recipe</button>
-=======
->>>>>>> Stashed changes
 
 
-      <div className="flex justify-center pt-10">
+        <div className="flex justify-center pt-10">
 
 
-        <div className="searchBar content-center flex items-center justify-center">
-          <form onSubmit={ev => handleUrlForm(ev)} className="w-96 mt-32 w-100 text-center">
-            {/* <form onSubmit={ev => handleSubmit(ev)} className="w-96 mt-32 w-100 text-center"> */}
+          <div className="searchBar content-center flex items-center justify-center">
+            <form onSubmit={ev => handleUrlForm(ev)} className="w-96 mt-32 w-100 text-center">
+              {/* <form onSubmit={ev => handleSubmit(ev)} className="w-96 mt-32 w-100 text-center"> */}
 
-            <label>
-              <input id="url" value={url} onChange={ev => { setUrl(ev.target.value) }} type="text" className='text-white h-10 placeholder:text-white mb-3 border-white px-4 bg-transparent rounded-md' placeholder="Paste URL" />
-            </label>
+              <label>
+                <input id="url" value={url} onChange={ev => { setUrl(ev.target.value) }} type="text" className='text-white h-10 placeholder:text-white mb-3 border-white px-4 bg-transparent rounded-md' placeholder="Paste URL" />
+              </label>
 
 
-            <label htmlFor={file} className="flex items-center text-left w-full bg-transparent border-2 text-white py-2 px-4 h-10 rounded-md cursor-pointer">
-              Upload a file
-              <input accept="image/*" ref={input} id="file" name="file" type="file" className="opacity-0 absolute" />
+              <label htmlFor={file} className="flex items-center text-left w-full bg-transparent border-2 text-white py-2 px-4 h-10 rounded-md cursor-pointer">
+                Upload a file
+                <input accept="image/*" ref={input} id="file" name="file" type="file" className="opacity-0 absolute" />
 
-            </label>
+              </label>
 
-            <div className="Buttons mt-25 pd-[20px] flex justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-12">
-              <button id="uploadBtn" className=" bg-green-600 hover:bg-green-700 active:bg-green-800 rounded-md w-[125px] py-3 px-2 mt-10" >Find Recipe</button>
-            </div>
-          </form>
+              <div className="Buttons mt-25 pd-[20px] flex justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-12">
+                <button id="uploadBtn" className=" bg-green-600 hover:bg-green-700 active:bg-green-800 rounded-md w-[125px] py-3 px-2 mt-10" >Find Recipe</button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div></div>
+      </div>
+    </div>
   )
 } 
