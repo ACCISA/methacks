@@ -53,10 +53,16 @@ app.get("/data", (req, res) => {
     jwt.verify(token, jwtSecret, {}, async (err, user) => {
       if (err) throw err;
       try {
-        const fam = await Family.findOne({
+        const fam = await Family.find({
           owner: user.id,
         });
-        res.json(fam);
+        let dataArr = [];
+
+        for (const index in fam) {
+          dataArr.push(fam[index]);
+        }
+        console.log(dataArr);
+        res.json(dataArr);
       } catch (errs) {
         res.json("no family found");
       }
