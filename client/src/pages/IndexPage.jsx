@@ -1,12 +1,13 @@
 import Post from "../Post";
-import { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import Header from '../Header';
 import HeaderIndex from "../HeaderIndex";
 import { FaCheckCircle } from "react-icons/fa";
 
 export default function IndexPage() {
-  const [url, setUrl] = useState('')
-  const [file, setFile] = useState(null)
+  const [url, setUrl] = useState('');
+  const [file, setFile] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const bg = {
     backgroundImage: 'url("src/images/background.jpg")',
@@ -25,6 +26,11 @@ export default function IndexPage() {
     position: 'absolute',
     top: '0'
   }
+
+  useEffect(() => {
+    const storedLoginStatus = localStorage.getItem("isLoggedIn");
+    setIsLoggedIn(storedLoginStatus === "true");
+  }, []);
 
   function handleUrlForm(ev) {
     ev.preventDefault()

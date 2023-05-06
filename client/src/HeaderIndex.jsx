@@ -8,8 +8,10 @@ export default function Header() {
   const { username, setUsername } = useContext(UserContext);
 
   function handleLogout() {
-    setUsername(null);
-  }
+  localStorage.removeItem('username');
+  setUsername(null);
+}
+
   function handleTest() {
     axios.get("/data", { username })
     // axios.post("/create", {
