@@ -147,7 +147,7 @@ export default function IndexPage() {
     <div style={bg} id="bkng" className="p-0 h-full  flex-col justify-center align-middle">
       <HeaderIndex />
       <div className="searchBar content-center flex items-center justify-center">
-        <div className="backdrop-blur-md mt-8 w-1/2 text-center rounded-md border text-lg">Welcome to NutriScan, where allergies don't limit your taste buds! Discover delicious recipes that cater to your dietary needs with our innovative platform. Input your allergies, and we'll filter out any potentially harmful ingredients, so you can enjoy your meals safely. Join our community of recipe enthusiasts today and embark on a culinary journey filled with tantalizing flavors and vibrant connections. <br />
+        <div className=" p-3 backdrop-blur-md mt-8 w-1/2 text-center rounded-md border text-lg">Welcome to NutriScan, where allergies don't limit your taste buds! Discover delicious recipes that cater to your dietary needs with our innovative platform. Input your allergies, and we'll filter out any potentially harmful ingredients, so you can enjoy your meals safely. Join our community of recipe enthusiasts today and embark on a culinary journey filled with tantalizing flavors and vibrant connections. <br />
 
         </div>
 
