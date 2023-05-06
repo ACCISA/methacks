@@ -6,7 +6,7 @@ import { UserContext } from './UserContext';
 export default function HeaderIndex() {
   const { username, setUsername } = useContext(UserContext)
   function handleLogout() {
-    axios.post("/login")
+    axios.post("/logout")
     setUsername(null);
 
   }
