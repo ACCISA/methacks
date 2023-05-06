@@ -99,6 +99,7 @@ button{
   height: 30px;
   width: auto;
   padding: 5px;
+  margin-top: 15px;
   background-color:#555;
 }
 .manageSubmit{
