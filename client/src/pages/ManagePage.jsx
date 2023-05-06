@@ -28,7 +28,7 @@ export default function ManagePage() {
         <>
 
             <div className="text-xl text-center my-4 flex flex-col items-center">
-                <h2 className=' font-bold flex justify-center text-xl'>Your Families</h2>
+                <h2 className=' font-bold flex justify-center text-xl'>Your Groups</h2>
                 <div className="grid grid-cols-4 border">
                     {username && families.map((fam) => (
                         <Link to={"/manage/" + fam._id}>
@@ -40,7 +40,7 @@ export default function ManagePage() {
 
                 </div>
                 <Link to={"/manage/new"}>
-                    <button className='w-20 mt-4 text-sm'> Add Family </button>
+                    <button className='w-20 mt-4 text-sm'> Add Group </button>
                 </Link>
             </div>
 
