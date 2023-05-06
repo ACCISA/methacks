@@ -11,9 +11,6 @@ export default function AddMemberForm({ setParent }) {
   const [recent, setRecent] = useState([])
   const [selected, setSelected] = useState([])
   const { id } = useParams();
-<<<<<<< Updated upstream
-  
-=======
 
   function handleRecentlyAdded(ev) {
     ev.preventDefault()
@@ -43,7 +40,6 @@ export default function AddMemberForm({ setParent }) {
 
   }
 
->>>>>>> Stashed changes
   function handleAddMember(ev) {
     ev.preventDefault();
     if (member.length == 0 || restr.length == 0) {
