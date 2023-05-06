@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 * {
   box-sizing: border-box;
-  font-family: 'Lobster', cursive;
+  font-family: 'Lobster', 'cursive';
   
 }
 

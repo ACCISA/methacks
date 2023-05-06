@@ -55,7 +55,7 @@ export default function IndexPage() {
   return (
     <div style={bg} id="bkng" className="p-0 h-full  flex-col justify-center align-middle">
       <HeaderIndex />
-      <div className="backdrop-blur-md content-center text-center rounded-md border text-lg">
+      <div className="font-sans backdrop-blur-md content-center text-center rounded-md border text-lg">
         Welcome to NutriScan, where allergies don't limit your taste buds! 
         <br></br>Discover delicious recipes that cater to your dietary needs with our innovative platform. <br/> Input your allergies, and we'll filter out any potentially harmful ingredients, so you can enjoy your meals safely. <br /> Join our community of recipe enthusiasts today and embark on a culinary journey filled with tantalizing flavors and vibrant connections. <br/>
       </div>
