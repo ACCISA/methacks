@@ -6,7 +6,6 @@ import HeaderIndex from "../HeaderIndex";
 export default function IndexPage() {
     const [url, setUrl] = useState('')
 
-
     const bg = {
         backgroundImage: 'url("src/images/background.jpg")',
 
@@ -38,7 +37,7 @@ export default function IndexPage() {
             <div className="searchBar content-center flex items-center justify-center">
                 <form onSubmit={handleUrlForm} className="w-96 mt-32 w-100 text-center">
                     <input value={url} onChange={ev => { setUrl(ev.target.value) }} type="text" className='text-white h-10 placeholder:text-white mb-3 border-white px-4 bg-transparent rounded-md' placeholder="Paste URL" />
-                    <label for="file" class="flex items-center text-left w-full bg-transparent border-2 text-white py-2 px-4 h-10 rounded-md cursor-pointer">
+                    <label for="file" class="flex items-center text-left w-full bg-transparent border-2 text-white py-2 px-4 h-10 rounded-md cursor-pointer  border-white">
                         Upload a file
                     </label>
                     <input id="file" name="file" type="file" class="hidden" />
