@@ -84,7 +84,7 @@ export default function RegisterPage() {
                 {missingPass && <div className="text-red-500">Missing password field</div>}
             </div>
             <div className="Buttons mt-25 pd-[20px] flex justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-12">
-                <button className=" bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-md w-[125px] py-3 px-2 mt-10">Register</button>
+                <button className=" bg-green-600 hover:bg-green-700 active:bg-green-800 rounded-md w-[125px] py-3 px-2 mt-10">Register</button>
             </div>
         </form>
     );
