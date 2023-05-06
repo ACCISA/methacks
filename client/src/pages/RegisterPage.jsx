@@ -13,6 +13,19 @@ export default function RegisterPage() {
     const [missingPass, setMissingPass] = useState(false)
     const [missingUsername, setMissingUsername] = useState(false)
     const [redirect, setRedirect] = useState(false)
+    const bg3 = {
+        backgroundImage: 'url("src/images/bkg3.jpg")',
+
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        color: "white",
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        width: "100%",
+        height: '100%'
+    }
     function handleRegister(ev) {
         setValidPass(true)
         setDupeUsername(false)
@@ -73,8 +86,9 @@ export default function RegisterPage() {
     }
 
     return (
+        <div style={bg3} id="bkng3" className="p-0 h-full  flex-col justify-center align-middle">
         <form className="register" onSubmit={handleRegister}>
-            <div className="searchBar content-center mt-[48px] flex flex-col items-center justify-center">
+            <div className="searchBar backdrop-blur-sm rounded-full content-center mt-[190px] flex flex-col items-center justify-center">
                 <input className="rounded-md h-10 px-4 bg-white mb-3 block w-full" value={usernameState} onChange={usernameOnChange} type="text" placeholder="Username" />
                 <input className="rounded-md h-10 px-4 bg-white mb-3 block w-full" value={password} onChange={passOnChange} type="password" placeholder="Password" />
                 <input className="rounded-md h-10 px-4 bg-white mb-3 block w-full" value={confirmPass} onChange={confirmPassOnChange} type="Password" placeholder="Confirm Password" />
@@ -87,5 +101,6 @@ export default function RegisterPage() {
                 <button className=" bg-green-600 hover:bg-green-700 active:bg-green-800 rounded-md w-[125px] py-3 px-2 mt-10">Register</button>
             </div>
         </form>
+        </div>
     );
 }
