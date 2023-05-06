@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import { Navigate, useParams } from 'react-router-dom';
 import axios from "axios"
@@ -8,6 +8,7 @@ export default function AddMemberForm({ setParent }) {
   const [missingField, setMissingField] = useState(false)
   const [member, setMember] = useState('')
   const [restr, setRestr] = useState('')
+  const [recent, setRecent] = useState([])
   const { id } = useParams();
   function handleAddMember(ev) {
     ev.preventDefault();
@@ -27,10 +28,18 @@ export default function AddMemberForm({ setParent }) {
     setMember(ev.target.value)
     setMissingField(false)
   }
+
   function handleRestrChange(ev) {
     setRestr(ev.target.value)
     setMissingField(false)
   }
+
+  useEffect(() => {
+    axios.get('/recent').then(({ data }) => {
+      setRecent(data)
+    })
+  }, [])
+
   return (
     <>
       {!redirect && (
@@ -40,7 +49,21 @@ export default function AddMemberForm({ setParent }) {
             &nbsp;
           </button>
           {showForm && (
+
             <form className="show borderForm" onSubmit={handleAddMember}>
+              <div>
+                <div className='text-center flex flex-col justify-items font-bold text-xl'>Recently Added</div>
+                {recent && (recent.map((member) => (
+                  <div className="flex border justify-between">
+                    <input type="radio" />
+                    <div className="mx-2">Name: {member.member}</div>
+                    <div>Restrictions: {member.restrictions}</div>
+                  </div>
+                )))}
+                <div>
+                  <button value={member.member} type="subnmit" className="w-6 items-center align-items rounded-full hover:bg-red-500">Add</button>
+                </div>
+              </div>
               <div>
                 <label htmlFor="username">Please enter the username of the new member:</label>
                 <input value={member} onChange={handleMemberChange} type='text' placeholder='username' className='w-1/3 mb-4' />
