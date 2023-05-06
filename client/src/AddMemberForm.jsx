@@ -9,8 +9,41 @@ export default function AddMemberForm({ setParent }) {
   const [member, setMember] = useState('')
   const [restr, setRestr] = useState('')
   const [recent, setRecent] = useState([])
+  const [selected, setSelected] = useState([])
   const { id } = useParams();
+<<<<<<< Updated upstream
   
+=======
+
+  function handleRecentlyAdded(ev) {
+    ev.preventDefault()
+    console.log(selected)
+    axios.put("/manage_multiple/" + id, { member: selected }).then(({ data }) => {
+      setParent(true)
+    })
+
+  }
+
+  function handleRadioChange(ev) {
+    console.log('te')
+    const { checked, id } = ev.target;
+    if (checked) {
+      let selectedInputs = [id]
+      setSelected(selected.concat(selectedInputs))
+    } else {
+      let newSelected = selected
+      for (let i = 0; i < selected.length; i++) {
+        if (selected[i] == id) {
+          newSelected.splice(i, 1)
+          break
+        }
+      }
+      setSelected(newSelected)
+    }
+
+  }
+
+>>>>>>> Stashed changes
   function handleAddMember(ev) {
     ev.preventDefault();
     if (member.length == 0 || restr.length == 0) {
@@ -40,7 +73,8 @@ export default function AddMemberForm({ setParent }) {
       setRecent(data)
     })
   }, [])
-
+  console.log("sda")
+  console.log(selected)
   return (
     <>
       {!redirect && (
@@ -51,12 +85,12 @@ export default function AddMemberForm({ setParent }) {
           </button>
           {showForm && (
             <>
-              <form className="show borderForm">
+              <form className="show borderForm" onSubmit={handleRecentlyAdded}>
                 <div>
                   <div className='text-center flex flex-col justify-items font-bold text-xl'>Recently Added</div>
                   {recent && (recent.map((member) => (
                     <div className="flex border justify-between">
-                      <input type="checkbox" className='text-sm w-10' />
+                      <input id={member._id} onChange={handleRadioChange} type="checkbox" className='text-sm w-10' />
                       <div className="mx-2">Name: {member.username}</div>
                       <div>Restrictions: {member.restrictions}</div>
                     </div>

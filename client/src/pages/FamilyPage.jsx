@@ -26,8 +26,9 @@ export default function FamilyPage() {
         //     }
         // }
         const userRemoved = ev.target.value
-        axios.post("/manage/" + id, { members, removed: userRemoved })
-        setParent(true)
+        axios.post("/manage/" + id, { members, removed: userRemoved }).then(({ data }) => {
+            setParent(true)
+        })
 
     }
 

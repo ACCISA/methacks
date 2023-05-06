@@ -106,6 +106,44 @@ app.get("/recent", async (req, res) => {
   }
 });
 
+app.put("/manage_multiple/:id", async (req, res) => {
+  const { id } = req.params;
+  const { token } = req.cookies;
+  const { member } = req.body;
+  jwt.verify(token, jwtSecret, {}, async (err, user) => {
+    if (err) {
+      res.json(err);
+      return;
+    }
+    const famDoc = await Family.findById(id);
+    let newRestr = [];
+    console.log(member.length);
+    console.log(member);
+    for (let i = 0; i < member.length; i++) {
+      const memberDoc = await Member.findById(member[i]);
+      famDoc.members.set(memberDoc.username, memberDoc.restrictions);
+      console.log(memberDoc.username);
+      console.log(memberDoc.restrictions);
+      for (let j = 0; j < memberDoc.restrictions.length; j++) {
+        newRestr.push(memberDoc.restrictions[j]);
+      }
+    }
+
+    let oldRestr = famDoc.restrictions.concat(newRestr);
+
+    famDoc.set({
+      owner: famDoc.owner,
+      name: famDoc.name,
+      description: famDoc.description,
+      members: famDoc.members,
+      restrictions: oldRestr,
+    });
+
+    await famDoc.save();
+    res.json(famDoc);
+  });
+});
+
 app.put("/manage/:id", async (req, res) => {
   const { id } = req.params;
   const { token } = req.cookies;
@@ -116,7 +154,6 @@ app.put("/manage/:id", async (req, res) => {
       res.json(err);
       return;
     }
-    console.log("sd");
     await Member.create({
       username: member,
       restrictions: restrictionsPut,
