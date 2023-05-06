@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import { Navigate, useParams } from 'react-router-dom';
 import axios from "axios"
-export default function AddMemberForm() {
+export default function AddMemberForm({ setParent }) {
   const [showForm, setShowForm] = useState(false);
   const [redirect, setRedirect] = useState(false);
   const [missingField, setMissingField] = useState(false)
@@ -19,8 +19,8 @@ export default function AddMemberForm() {
     axios.put("/manage/" + id, {
       member, restrictionsPut: dataRestr
     })
-
-    setRedirect(true);
+    setParent(true)
+    // setRedirect(true);
   }
 
   function handleMemberChange(ev) {

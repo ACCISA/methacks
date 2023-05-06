@@ -45,17 +45,24 @@ app.post("/manage/:id", async (req, res) => {
       newRestr.splice(i, 1);
     }
   }
-  console.log(newRestr);
+  // console.log(newRestr);
   let a = famDoc.owner;
   let b = famDoc.name;
   let c = famDoc.description;
-  // console.log(famDoc);
-  // famDoc.set({
-  //   owner: a,
-  //   name: b,
-  //   description: c,
-  // });
-  res.json("ok");
+  let membersObj = {};
+  for (let i = 0; i < members.length; i++) {
+    membersObj[members[i].member] = members[i].restrictions;
+  }
+
+  famDoc.set({
+    owner: a,
+    name: b,
+    description: c,
+    members: membersObj,
+    restrictions: newRestr,
+  });
+  await famDoc.save();
+  res.json();
 });
 
 app.get("/manage/:id", (req, res) => {

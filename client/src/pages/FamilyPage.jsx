@@ -11,7 +11,7 @@ export default function FamilyPage() {
     const [members, setMembers] = useState([])
     const { username, setUsername } = useContext(UserContext)
     const [redirect, setRedirect] = useState(false)
-
+    const [parent, setParent] = useState(false)
     function handleRemoveGroup() {
         alert("This group has been removed")
         axios.delete("/manage/" + id)
@@ -27,6 +27,7 @@ export default function FamilyPage() {
         // }
         const userRemoved = ev.target.value
         axios.post("/manage/" + id, { members, removed: userRemoved })
+        setParent(true)
 
     }
 
@@ -35,7 +36,6 @@ export default function FamilyPage() {
         if (!username) return;
         axios.get("/manage/" + id)
             .then(({ data }) => {
-                console.log("Asd")
                 setName(data.name)
                 setFam(data)
                 let dataArr = []
@@ -49,8 +49,8 @@ export default function FamilyPage() {
                 })
                 setMembers(dataArr)
             })
-
-    }, [])
+        setParent(false)
+    }, [parent])
 
     if (!username) {
         return (<Navigate to={"/login"} />)
@@ -78,7 +78,7 @@ export default function FamilyPage() {
                                 <button value={member.member} onClick={handleRemoveMember} className="w-6 rounded-full hover:bg-red-500">X</button>
                             </div>
                         )))}
-                        <AddMemberForm />
+                        <AddMemberForm setParent={setParent} />
                     </div>
                 </div>
             )}
