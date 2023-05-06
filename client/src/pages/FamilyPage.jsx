@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useContext, useEffect, useState } from "react"
+import { Navigate, useParams } from "react-router-dom"
 import axios from "axios"
+import AddMemberForm from "../AddMemberForm"
+import { UserContext } from '../UserContext';
 
 export default function FamilyPage() {
     const { id } = useParams()
     const [fam, setFam] = useState({})
     const [name, setName] = useState('')
     const [members, setMembers] = useState([])
+    const { username, setUsername } = useContext(UserContext)
     useEffect(() => {
         if (!id) return;
+        if (!username) return;
         axios.get("/manage/" + id)
             .then(({ data }) => {
                 console.log("Asd")
@@ -28,6 +32,9 @@ export default function FamilyPage() {
 
     }, [])
 
+    if (!username) {
+        return (<Navigate to={"/login"} />)
+    }
 
     return (
         <div>
@@ -42,6 +49,7 @@ export default function FamilyPage() {
 
                             </div>
                         )))}
+                        <AddMemberForm />
                     </div>
                 </div>
             )}
