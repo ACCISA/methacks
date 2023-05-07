@@ -64,7 +64,7 @@ export default function AddFamilyForm() {
           {missingField && <div className="text-red-500">Missing field</div>}
 
           <div className="flex flex-row justify-between">
-            <button type="submit" className='align-items ml-8 button manageSubmit' value='Add' ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <button type="submit" className='align-items ml-8 button manageSubmit' value='Add' ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 1 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             </button>
