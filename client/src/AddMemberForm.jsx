@@ -17,7 +17,7 @@ export default function AddMemberForm({ setParent }) {
   const bgFam = {
     backgroundImage: 'url("\src\images\plainb.webp")',
     backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
+    backgroundRepeat: "repeat",
     backgroundPosition: "center",
     color: "white",
     position: 'static',
@@ -89,7 +89,8 @@ export default function AddMemberForm({ setParent }) {
   return (
     
   <>
-   
+   <div style={bgFam} id="bkng2" className="p-0 h-full  flex-col justify-center align-middle">
+      
         {!redirect && (
           <div>
             <button className='manageButton mb-2 flex hover:bg-green-500' onClick={() => setShowForm(!showForm)}>
@@ -140,7 +141,7 @@ export default function AddMemberForm({ setParent }) {
           </div>
         )}
         {redirect && <Navigate to={"/manage/" + id} />}
-      
+      </div>
       </>
       );
 }
