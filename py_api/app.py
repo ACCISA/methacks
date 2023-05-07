@@ -27,7 +27,8 @@ def get_ingredients_from_image():
     print("Getting the ingredients from the image upload")
 
     if request.method == 'POST':
-        image = request.files.get('image')
+        print(request.files)
+        image = request.files.get('file')
         if (image):
 
             img1 = np.array(Image.open(image))
@@ -35,35 +36,39 @@ def get_ingredients_from_image():
 
             print(recipe)
 
-            url = "https://api.spoonacular.com/recipes/extract"
+            url = "https://api.spoonacular.com/recipes/analyzeInstructions"
             params = {
-                "apiKey": "e3c9cd8d2998470fbaa639d5a4dc0fa0",
-                "forceExtraction": True,
-                "url": recipe
+                "apiKey": "e3c9cd8d2998470fbaa639d5a4dc0fa0"
             }
 
-            response = requests.get(url, params=params)
+            data = {
+                    "instructions" : recipe
+                }
+
+            headers = {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+
+            response = requests.post(url, params=params, data=data)
             data = response.json()
-            ingredients = data["extendedIngredients"]
-            clean_ingredient_names = [ingredient["nameClean"]
+            print(data['parsedInstructions'])
+            ingredients = data["ingredients"]
+            clean_ingredient_names = [ingredient["name"]
                                       for ingredient in ingredients]
             return clean_ingredient_names
+            # return ""
     return "Virgule"
-
-
-@app.route("/text",methods=['POST','GET'])
-def teast():
-    return "ye"
 
 @app.route("/url", methods=['POST'])
 def get_ingredients_from_URL():
 
     print("Getting the ingredients from the URL")
-    # if request.method == 'POST':
-    #     url_recipe = request.form.get('snap')
-    #     print(url_recipe)
 
     if request.method == 'POST':
+        url = request.json.get('url')
+        response = requests.get('http://localhost:3000/user-input')
+        userInput = response.json()
+        return userInput
 
         url = "https://api.spoonacular.com/recipes/extract"
         # url_recipe = request.files.get('snap')
