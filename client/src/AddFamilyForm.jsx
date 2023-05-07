@@ -7,11 +7,11 @@ export default function AddFamilyForm() {
   const [missingField, setMissingField] = useState(false);
   const [familyName, setFamilyName] = useState('');
   const [familyDescription, setFamilyDescription] = useState('');
-  
+
   const handleAddFamily = (event) => {
     if (!familyName.trim() || !familyDescription.trim()) {
       setMissingField(true);
-       event.preventDefault();
+      event.preventDefault();
 
     } else {
       event.preventDefault();
@@ -30,30 +30,39 @@ export default function AddFamilyForm() {
   const handleDescriptionChange = (event) => {
     setFamilyDescription(event.target.value);
   };
-  
+
 
   if (redirect) {
     return <Navigate to="/manage" />;
   }
 
   return (
-    <div>
-      
-      <h2 className=' font-bold flex justify-center text-xl'>Add A Group Form</h2>
-      <form className='backdrop-blur-md rounded-md border border-solid  pl-10 pr-10 pt-5 pb-5 m-10 mx-80' onSubmit={handleAddFamily}>
-        <div>
+    <>
+      <h2 className=' font-bold ml-60 text-xl'>Add A Group Form</h2>
+
+      <div className="flex flex-row left-0">
+        <form className='w-90 absolute left-0 backdrop-blur-md rounded-md border border-solid  pl-10 pr-10 pt-5 pb-5 mx-40 mt-4' onSubmit={handleAddFamily}>
           <label htmlFor="username">Please enter the name of your new group:</label>
-          <input type='text' placeholder='Group Name' className=' text-black w-1/3 mb-4' value={familyName} onChange={handleNameChange} />
+          <input type='text' placeholder='Group Name' className=' text-black w-full mb-4' value={familyName} onChange={handleNameChange} />
           <label htmlFor="groupDescription" className='my-16'>Please write a brief description of your group:</label>
-          <input type='text' name="dietRestrictions" placeholder="Group Description" className=' text-black w-1/2 border' value={familyDescription} onChange={handleDescriptionChange} />
+          <input type='text' name="dietRestrictions" placeholder="Group Description" className=' text-black w-full border' value={familyDescription} onChange={handleDescriptionChange} />
           {missingField && <div className="text-red-500">Missing field</div>}
 
-          <button type="submit" className='button manageSubmit'  value='Add' ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
-      </button>
-        </div>
-      </form>
-    </div>
+          <div className="flex flex-row justify-between">
+            <button type="submit" className='align-items ml-8 button manageSubmit' value='Add' ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            </button>
+            <button onClick={handleReturn} className="button manageSubmit mr-8 justify-between hover:bg-red-500">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+              </svg>
+            </button>
+          </div>
+        </form>
+        <div className="w-full left-0 absolute"></div>
+      </div>
+
+    </>
   );
 }

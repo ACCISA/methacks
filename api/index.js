@@ -62,7 +62,7 @@ app.post("/manage/:id", async (req, res) => {
     restrictions: newRestr,
   });
   await famDoc.save();
-  res.json();
+  res.status(203).json(famDoc);
 });
 
 app.get("/manage/:id", (req, res) => {

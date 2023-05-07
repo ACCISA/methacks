@@ -24,18 +24,10 @@ export default function AddFamily() {
     }
 
     return (
-        <>
-        <div style={bgFam} id="bkng2" className="p-0 ">
-        <HeaderIndex />
-        <div className=" mt-14"></div>
+
+
+
         <AddFamilyForm />
-        </div>
-    
-        </>
-
-
-
-        
 
 
     );
