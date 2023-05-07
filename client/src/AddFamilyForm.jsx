@@ -52,7 +52,7 @@ export default function AddFamilyForm() {
   return (
     <>
       <div style={bgForm} id="bkng" className="p-0 h-full  flex-col justify-center align-middle">
-      <HeaderIndex />
+        <HeaderIndex />
         <h2 className=' mt-20 font-bold ml-60 text-xl'>Add A Group Form</h2>
       </div>
       <div className=" mt-24 flex flex-row left-0">
@@ -68,11 +68,15 @@ export default function AddFamilyForm() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             </button>
-            <button className="button manageSubmit mr-8 justify-between hover:bg-red-500">
+            <button
+              className="button manageSubmit mr-8 justify-between hover:bg-red-500"
+              onClick={() => setRedirect(true)}
+            >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 1 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
               </svg>
             </button>
+
           </div>
         </form>
         <div className="w-full left-0 absolute"></div>
