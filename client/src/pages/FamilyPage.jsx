@@ -4,6 +4,7 @@ import axios from "axios"
 import AddMemberForm from "../AddMemberForm"
 import { UserContext } from '../UserContext';
 import { Avatar } from "flowbite-react";
+import HeaderIndex from "../HeaderIndex";
 
 export default function FamilyPage() {
     const { id } = useParams()
@@ -13,9 +14,9 @@ export default function FamilyPage() {
     const { username, setUsername } = useContext(UserContext)
     const [redirect, setRedirect] = useState(false)
     const [parent, setParent] = useState(false)
-    const bgFam = {
-        backgroundImage: 'url("src/images/spoon.jpg")',
 
+    const bgFam = {
+        backgroundImage: 'url("/src/images/middle.avif")',
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -72,6 +73,11 @@ export default function FamilyPage() {
     }
 
     return (
+       <>
+        <div style={bgFam} id="bkng" className="p-0 h-full  flex-col justify-center align-middle">
+
+        <HeaderIndex />
+
         <div>
             {name && (
                 <div>
@@ -103,5 +109,8 @@ export default function FamilyPage() {
                 </div>
             )}
         </div>
+        </div>
+        </>
+        
     )
 }
