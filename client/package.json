@@ -12,6 +12,8 @@
   "dependencies": {
     "autoprefixer": "^10.4.14",
     "axios": "^1.4.0",
+    "flowbite": "^1.6.5",
+    "flowbite-react": "^0.4.4",
     "nodemon": "^2.0.22",
     "pillow": "^0.0.9",
     "postcss": "^8.4.23",

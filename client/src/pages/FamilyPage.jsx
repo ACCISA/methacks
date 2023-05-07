@@ -3,6 +3,7 @@ import { Navigate, useParams } from "react-router-dom"
 import axios from "axios"
 import AddMemberForm from "../AddMemberForm"
 import { UserContext } from '../UserContext';
+import { Avatar } from "flowbite-react";
 
 export default function FamilyPage() {
     const { id } = useParams()
@@ -83,6 +84,12 @@ export default function FamilyPage() {
                     <div className="border p-2">
                         {fam && (members.map((member) => (
                             <div className="flex border justify-between">
+                                <Avatar
+                                    img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                    rounded={true}
+                                    bordered={true}
+                                    color="gray"
+                                />
                                 <div className="mx-2">Name: {member.member}</div>
                                 <div>Restrictions: {member.restrictions}</div>
                                 <button id={member.member} value={member.member} onClick={handleRemoveMember} className="mb-2 w-8 text-center items-center align-items rounded-full hover:bg-red-500"><svg id={member.member} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ml-1">
