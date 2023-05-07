@@ -15,7 +15,7 @@ export default function AddFamilyForm() {
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     color: "white",
-    position: 'absolute',
+    position: 'static',
     top: '0',
     left: '0',
     width: "100%",

@@ -15,7 +15,7 @@ export default function AddMemberForm({ setParent }) {
   const { id } = useParams();
 
   const bgFam = {
-    backgroundImage: 'url("/src/images/middle.avif")',
+    backgroundImage: 'url("\src\images\plainb.webp")',
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
