@@ -144,3 +144,14 @@ button {
   border-radius: 5px;
 
 }
+.background-image {
+  background-image: url("/src/images/plainb.webp");
+  background-repeat: repeat-y;
+  background-size: cover;
+  min-height: 1350px;
+  min-width: 1469px;
+  left: 0;
+  top: 0;
+  float: left;
+  position: absolute;
+}

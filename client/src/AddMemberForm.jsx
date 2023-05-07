@@ -14,18 +14,7 @@ export default function AddMemberForm({ setParent }) {
   const [selected, setSelected] = useState([])
   const { id } = useParams();
 
-  const bgFam = {
-    backgroundImage: 'url("\src\images\plainb.webp")',
-    backgroundSize: "cover",
-    backgroundRepeat: "repeat",
-    backgroundPosition: "center",
-    color: "white",
-    position: 'static',
-    top: '0',
-    left: '0',
-    width: "100%",
-    height: '100%'
-}
+   
  
   function handleRecentlyAdded(ev) {
     ev.preventDefault()
@@ -89,7 +78,7 @@ export default function AddMemberForm({ setParent }) {
   return (
     
   <>
-   <div style={bgFam} id="bkng2" className="p-0 h-full  flex-col justify-center align-middle">
+
       
         {!redirect && (
           <div>
@@ -141,7 +130,7 @@ export default function AddMemberForm({ setParent }) {
           </div>
         )}
         {redirect && <Navigate to={"/manage/" + id} />}
-      </div>
+      
       </>
       );
 }
