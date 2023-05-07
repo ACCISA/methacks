@@ -1,14 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./src/**/*.{js,jsx}"
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,jsx}",
   ],
   theme: {
     extend: {},
     fontFamily: {
-      sans: ['didot','cursive']
-    }
+      sans: ["didot", "cursive"],
+    },
   },
-  plugins: [],
-}
-
+  plugins: [require("flowbite/plugin")],
+};
