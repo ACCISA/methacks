@@ -23,7 +23,7 @@ export default function Header() {
     // })
   }
   return (
-    <header className='mt-[50px] flex flex-row align-middle justify-between px-80'>
+    <header className='src="client\src\images\logo.png" mt-[50px] flex flex-row align-middle justify-between px-80'>
       <Link to="/" className="logo text-3xl font-bold">
         NutriScan
       </Link>
