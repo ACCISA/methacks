@@ -10,7 +10,7 @@ export default function ManagePage() {
     const [families, setFamilies] = useState([])
     const [redirect, setRedirect] = useState(false)
     const bgManage = {
-        backgroundImage: 'url("client\src\images\manage.jpeg")',
+        backgroundImage: 'url("src/images/pic.jpg")',
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -40,7 +40,7 @@ export default function ManagePage() {
     return (
         <>
     <div style={bgManage} id="bkng5" className="p-0 h-full  flex-col justify-center align-middle">
-                <div><HeaderIndex /></div>
+                <HeaderIndex />
 
                 <div className=" mt-36 text-xl text-center my-4 flex flex-col items-center">
                     <h2 className=' font-bold font-sans flex justify-center text-xl'>Your Groups</h2>

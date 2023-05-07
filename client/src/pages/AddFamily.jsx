@@ -6,8 +6,8 @@ import { Navigate } from "react-router-dom";
 export default function AddFamily() {
     const { username, setUsername } = useContext(UserContext)
 
-    const bgFam = {
-        backgroundImage: 'url("/src/images/manage.jpeg")',
+    const bgForm = {
+        backgroundImage: 'url("src/images/manage.jpeg")',
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -24,11 +24,12 @@ export default function AddFamily() {
     }
 
     return (
+            
+            
 
+                <AddFamilyForm />
+            
+            
 
-
-        <AddFamilyForm />
-
-
-    );
+            );
 }

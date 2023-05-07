@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
+import HeaderIndex from "./HeaderIndex";
 
 export default function AddFamilyForm() {
   const [redirect, setRedirect] = useState(false);
@@ -8,7 +9,7 @@ export default function AddFamilyForm() {
   const [familyName, setFamilyName] = useState('');
   const [familyDescription, setFamilyDescription] = useState('');
   const bgForm = {
-    backgroundImage: 'url("src/images/manage.jpeg")',
+    backgroundImage: 'url("/src/images/manage.jpeg")',
 
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -51,9 +52,10 @@ export default function AddFamilyForm() {
   return (
     <>
       <div style={bgForm} id="bkng" className="p-0 h-full  flex-col justify-center align-middle">
-        <h2 className=' font-bold ml-60 text-xl'>Add A Group Form</h2>
+      <HeaderIndex />
+        <h2 className=' mt-20 font-bold ml-60 text-xl'>Add A Group Form</h2>
       </div>
-      <div className="flex flex-row left-0">
+      <div className=" mt-24 flex flex-row left-0">
         <form className='w-90 absolute left-0 backdrop-blur-md rounded-md border border-solid  pl-10 pr-10 pt-5 pb-5 mx-40 mt-4' onSubmit={handleAddFamily}>
           <label htmlFor="username">Please enter the name of your new group:</label>
           <input type='text' placeholder='Group Name' className=' text-black w-full mb-4' value={familyName} onChange={handleNameChange} />
