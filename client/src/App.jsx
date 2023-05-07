@@ -9,6 +9,7 @@ import axios from "axios"
 import ManagePage from './pages/ManagePage';
 import AddFamily from './pages/AddFamily';
 import FamilyPage from './pages/FamilyPage';
+import Flowbite from './pages/Flowbite';
 
 axios.defaults.baseURL = "http://localhost:4000";
 axios.defaults.withCredentials = true;
@@ -24,6 +25,7 @@ function App() {
           <Route path="/manage" element={<ManagePage />} />
           <Route path="/manage/new" element={<AddFamily />} />
           <Route path="/manage/:id" element={<FamilyPage />} />
+          <Route path="/test" element={<Flowbite />} />
         </Route>
       </Routes>
     </UserContextProvider>
