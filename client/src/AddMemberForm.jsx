@@ -89,7 +89,7 @@ export default function AddMemberForm({ setParent }) {
   return (
     
   <>
-  
+   
         {!redirect && (
           <div>
             <button className='manageButton mb-2 flex hover:bg-green-500' onClick={() => setShowForm(!showForm)}>
@@ -107,7 +107,7 @@ export default function AddMemberForm({ setParent }) {
                   <div>
                     <div className='text-center flex flex-col justify-items font-bold text-xl'>Recently Added</div>
                     {recent && (recent.map((member) => (
-                      <div className="flex border justify-between">
+                      <div className="flex border-2 rounded-md m-3 px-2 justify-between">
                         <input id={member._id} onChange={handleRadioChange} type="checkbox" className='text-sm w-10' />
                         <div className="mx-2">Name: {member.username}</div>
                         <div className='font-sans'>Restrictions: {member.restrictions}</div>
