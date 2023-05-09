@@ -1,6 +1,5 @@
 # Nutriscan
 
-About NutriScan
 NutriScan is a project we created to help people with dietary restrictions easily modify their favorite recipes to fit their specific needs. As a team that has collectively struggled with food sensitivities and allergies, we know firsthand how challenging it can be to find recipes that meet our dietary requirements while still being delicious and satisfying.
 
 # Inspiration💡
